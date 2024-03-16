@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html style="margin-left: 50px; margin-right: 50px; width: auto; background-color:rgba(0, 255, 106, 0.418)">
+
+<head>
+    <meta charset="utf-8">
+    <title> Lab 04 </title>
+</head>
+
+
+
+<header
+    style="text-align:center; font-size: 150%; background-color: rgb(162, 239, 239); border-color: black; border: 2px solid;">
+    <h1 style="text-align: center; margin-top: 50px;
+    font-style: italic; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Lab 04
+    </h1>
+    <br>
+
+</header>
+
+
+<div>
+    <a name="Problem 1"></a>
+    <h1>Problem 1</h1>
+
+    <form>
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" required><br><br>
+    
+        <label for="address">Enter Your Address:</label>
+        <input type="text" id="address" required><br><br>
+    
+        <label for="phone">Enter Your Phone Number [(123)456-7890]:</label>
+        <input type="text" id="phone" required pattern="\(\d{3}\) \d{3}-\d{4}"><br><br>
+    
+        <button type="button" id="button" onclick="validateAndDisplay()" style="width: 500px; 
+        height: 100px; background-color: red;">Submit</button>
+    </form>
+    
+    <div id="output"></div>
+    
+    <script>
+        function validateAndDisplay() {
+            const nameInput = document.getElementById("name");
+            const addressInput = document.getElementById("address");
+            const phoneInput = document.getElementById("phone");
+
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(nameInput.value)) {
+                alert("Name can only contain letters and spaces.");
+                return;
+            }
+
+            const phoneRegex = /^\(\d{3}\)\d{3}-\d{4}$/;
+            if (!phoneRegex.test(phoneInput.value)) {
+                alert("Phone number must be in the format (xxx)xxx-xxxx");
+                return;
+            }
+
+            const formattedPhone = phoneInput.value.replace(/^(\d{3}) (\d{3})-(\d{4})$/, "$1-$2-$3");
+
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = `
+            <h1>Your Information</h1>
+            <p>Name: <span style="font-size: 24px">${nameInput.value}</span></p>
+            <p>Address: <span style="font-size: 24px">${addressInput.value}</span></p>
+            <p>Phone Number: <span style="font-size: 24px">${formattedPhone}</span></p>
+            `;
+            document.getElementById("button").style.backgroundColor = 'green';
+        }
+    </script>
+</div>
+
+<br><br>
+<hr><hr>
+<br><br>
+
+<div>
+    <a name="Problem 2"></a>
+    <h1>Problem 2</h1>
+    <textarea id="textInput" oninput="liveCounter()" style="width: 900px; height: 100px;"></textarea>
+    <div id="charCount">Total Characters: 0</div>
+    <div id="letterCount">Letter Characters: 0</div>
+    
+    <script>
+        function liveCounter() {
+            const textInput = document.getElementById("textInput").value;
+            const charCount = document.getElementById("charCount");
+            const letterCount = document.getElementById("letterCount");
+            
+            const totalCharacters = textInput.length;
+            
+            const totalLetters = textInput.match(/[A-Za-z]/g).length;
+            
+            charCount.textContent = "Total Characters: " + totalCharacters;
+            letterCount.textContent = "Letter Characters: " + totalLetters;
+        }
+        </script>
+</div>
+
+<br><br>
+<hr><hr>
+<br><br>
+
+
+<div>
+    <a name="Problem 3"></a>
+    <h1>Problem 3</h1>
+    <ul id="bookmarkList"></ul>
+    
+    
+    <script>
+        function createBookmarkList() {
+            
+            const bookmarks = [
+                { url: "https://www.google.com", secure: true },
+                { url: "http://www.insecurewebsitelink.com", secure: false },
+                { url: "https://www.torontomu.ca/", secure: true},
+                { url: "http://www.insecurewebsitelink2.com", secure: false }
+            ];
+
+
+            const bookmarkList = document.getElementById("bookmarkList");
+
+            bookmarks.forEach((bookmark) => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = bookmark.url;
+                link.textContent = bookmark.url;
+
+                const picture = document.createElement("img");
+                picture.style.width= '20px'
+                picture.style.height= '20px'
+                picture.src = bookmark.secure ? "greenPadlock.jpg" : "RedPadlock.png";
+
+                listItem.appendChild(link);
+                listItem.appendChild(picture);
+                bookmarkList.appendChild(listItem);
+            });
+        }
+
+        createBookmarkList();
+    </script>
+
+</html>

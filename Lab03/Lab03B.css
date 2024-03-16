@@ -1,0 +1,65 @@
+* {box-sizing:border-box;}
+html{
+    padding: 10px;
+}
+
+html:after {
+    content : "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url("images/Baltimore-Skyline-2018.jpg"); 
+    width: 100%;
+    height: 100%;
+    opacity : 0.3;
+    z-index: -1;
+}
+
+
+
+.row::after {content:""; clear:both; display:table;}
+
+header {
+    text-align: center;
+    font-size: 50px;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    text-align: justify;
+}
+.bodytext{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    text-align: center;
+    color: blue;
+}
+
+.bodytext2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: green;
+}
+
+.text2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    text-align: justify;
+}
+
+#titles{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
+    font-style: italic;
+    color: red;
+}
+#headers{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-style: italic bold;
+    color: Brown;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="lab07b.css">
+    <title>Lab 7 Part B</title> 
+
+</head>
+
+<body>
+    <h1>User Information:</h1>
+    <form action="https://www2.cs.torontomu.ca/~wjabour/cgi-bin/lab07b.cgi" method="post" enctype="multipart/form-data">
+        
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName">
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName">
+
+        <label for="street">Street Name:</label>
+        <input type="text" id="street" name="street">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+
+        <label for="postalCode">Postal Code:</label>
+        <input type="text" id="postalCode" name="postalCode"
+            title="Enter a valid postal code">
+
+        <label for="province">Province:</label>
+        <select id="province" name="province">
+            <option value="" selected>Select Province</option>
+            <option value="AB">Alberta</option>
+            <option value="BC">British Columbia</option>
+            <option value="MB">Manitoba</option>
+            <option value="NC">New Brunswick</option>
+            <option value="NL">Newfoundland and Labrador</option>
+            <option value="NS">Nova Scotia</option>
+            <option value="ON">Ontario</option>
+            <option value="PEI">Prince Edward Island</option>
+            <option value="QC">Quebec</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="YT">Yukon</option>
+            <option value="NV">Nunavut</option>
+            <option value="NT">Northwest Territories</option>
+        </select>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" title="Enter a 10-digit phone number">
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="photograph">Photograph:</label>
+        <input type="file" id="photograph" name="photograph" accept="image/*">
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+
+</html>

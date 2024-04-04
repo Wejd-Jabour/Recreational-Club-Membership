@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar</title>
+<link rel="stylesheet" href="Treasurer's Page.css">
+</head>
+<body>
+
+<div id="CalendarSection">
+
+  <h1>Calendar</h1>
+  
+  <button onclick="previousMonth()"> < Previous Month</button>
+  <button onclick="nextMonth()">Next Month >  </button>
+  <div id="calendar"></div>
+</div>
+
+
+
+<script src="Treasurer's Page.js"></script>
+
+<!-- <script>
+    function generateCalendar(year, month) {
+      const calendarDiv = document.getElementById('calendar');
+  
+      // Clear previous calendar
+      calendarDiv.innerHTML = '';
+  
+      // Create a new date object
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      
+      // Create table element
+      const table = document.createElement('table');
+      
+      // Create table header
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      daysOfWeek.forEach(day => {
+        const th = document.createElement('th');
+        th.textContent = day;
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+  
+      // Create table body
+      const tbody = document.createElement('tbody');
+  
+      let currentDate = new Date(firstDay);
+      let currentDateIndex = 0;
+  
+      while (currentDate <= lastDay) {
+        const newRow = document.createElement('tr');
+        for (let i = 0; i < 7; i++) {
+          const cell = document.createElement('td');
+          if (currentDateIndex >= firstDay.getDay() && currentDate.getMonth() === month) {
+            cell.textContent = currentDate.getDate();
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+          newRow.appendChild(cell);
+          currentDateIndex++;
+        }
+        tbody.appendChild(newRow);
+      }
+  
+      table.appendChild(tbody);
+      calendarDiv.appendChild(table);
+    }
+  
+    // Call generateCalendar with current month and year
+    const now = new Date();
+    generateCalendar(now.getFullYear(), now.getMonth()); 
+  </script> -->
+
+</body>
+</html>

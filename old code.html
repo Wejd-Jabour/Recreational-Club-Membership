@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circular Bar Progress</title>
+<header>
+  <h1>Mr. Potato Head Game</h1>
+</header>
+
+<link rel="stylesheet" href="Treasurer's Page.css">
+</head>
+<body>
+
+<svg id="progress-container">
+  <circle id="progress-circle" cx="100" cy="100" r="70"></circle>
+  <text id="progress-text" x="55" y="110" style="fill:black ; font-size:30px;">$10000</text>
+</svg>
+
+<script>
+  function updateProgress(value) {
+    const circle = document.getElementById('progress-circle');
+    const circumference = parseFloat(circle.getAttribute('r')) * 2 * Math.PI;
+    const offset = circumference - (value / 100) * circumference;
+    circle.style.strokeDashoffset = offset;
+  }
+
+  function updatevalIncome() {
+    let value = document.getElementById("Income Value").value;
+    document.getElementById("progress-text").textContent = "$" + document.getElementById("Income Value").value;
+    if ( value > 10000) value = 10000
+    value = (value/100)
+    updateProgress(value);
+    document.getElementById("Income Value").value = "";
+    document.getElementById("Income Reason").value = "";
+  }
+
+  
+</script>
+<br>
+
+
+
+This is the income part of the treasurer's page 
+<label for="Income Value">Income Value:</label>
+<input type="text" id="Income Value" name="Income Value">
+<label for="Income Reason">Income Reason:</label>
+<input type="text" id="Income Reason" name="Income Reason">
+<button type="button" id="button" onclick="updatevalIncome()">Submit</button>
+
+
+
+
+ This is the Expense part of the treasurer's page 
+<label for="Expense Value">Expense Value:</label>
+<input type="text" id="Expense Value" name="Expense Value">
+<label for="Expense Reason">Expense Reason:</label>
+<input type="text" id="Expense Reason" name="Expense Reason">
+<button type="button" id="button" onclick="updatevalExpense()">Submit</button>
+
+</body>
+</html> -->

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+  <header>
+    <h1>Recreational Club Membership</h1>
+    <div>
+      Welcome back treasurer!
+    </div>
+  </header>
+  <hr>
+
+
+  <link rel="stylesheet" href="Treasurer's Page.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body class="container-fluid">
+  
+  <div class="row">
+    <div class="col-lg-4">
+
+      <svg id="progress-container">
+        <circle id="progress-circle" cx="100" cy="100" r="70"></circle>
+        <text id="progress-text" x="50" y="110" style="fill:black ; font-size:25px;">$0</text>
+      </svg>
+    </div>
+    <div class="col-lg-8">
+      <div class="row">
+        <div  class="col-lg-9"><br><br><br></div>
+        <button type="button" class="col-lg-4" id="button" onclick="revealIncome()">Add Income</button>
+        <button type="button" class="col-lg-4" id="button" onclick="revealExpense()">Add Expense</button>
+        <button type="button" class="col-lg-4" id="button" onclick="revealCalendar()">Calendar</button>
+      
+      </div>
+        
+    </div>
+  </div>
+  
+<script src="Treasurer's Page.js"></script>
+<br>
+
+<!-- This is the income part of the treasurer's page -->
+<div class="centered" id="Income Section" style="display: none;">
+  
+  <label for="Income Value">Income Value:</label>
+  <br>
+  <input type="text" id="Income Value" name="Income Value">
+  <br>
+  
+  <label for="Income Reason">Income Reason:</label>
+  <br>
+  <textarea type="text" id="Income Reason" name="Income Reason"></textarea>
+  <br>
+  
+  <button type="button" id="button" onclick="updatevalIncome()">Submit</button>
+  <br>
+  
+</div>
+
+
+
+
+
+<!-- This is the Expense part of the treasurer's page  -->
+<div class="centered" id="Expense Section" style="display: none;">
+  <label for="Expense Value">Expense Value:</label>
+  <br>
+  <input type="text" id="Expense Value" name="Expense Value">
+  <br>
+
+  <label for="Expense Reason">Expense Reason:</label>
+  <br>
+  <textarea type="text" id="Expense Reason" name="Expense Reason"></textarea>
+  <br>
+
+  <button type="button" id="button" onclick="updatevalExpense()">Submit</button>
+</div>
+  
+  
+  
+
+
+<!--  This is the calendar part of the treasurer's page  -->
+<div id="CalendarSection" style="display: none;">
+
+  <h1>Calendar</h1>
+  
+  <button onclick="previousMonth()"> < Previous Month</button>
+  <button onclick="nextMonth()">Next Month >  </button>
+  <br>
+  <div id="calendar"></div>
+</div>
+
+
+
+</body>
+</html>
+
+<!-- 
+Dropdown for income/expense
+List of coaches to add/give perm for each calendar day -->

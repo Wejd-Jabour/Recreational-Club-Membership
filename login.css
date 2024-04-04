@@ -28,12 +28,13 @@ body {
   color: darkblue;
   text-align: center;
   position:relative;
-  font-size: 45px;
+  font-size: 65px;
   font-weight:700;
 }
 
 .wrapper {
-  width: 420px;
+  width: 500px;
+  /* height: 400px; */
   padding: 20px;
   background: darkblue;
   color: white;
@@ -44,13 +45,14 @@ body {
 .wrapper h1 {
   font-size: 36px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .wrapper .input-box {
   position: relative;
-  width: 100%;
+  width: 80%;
   height: 50px;
-  margin: 30px 0;
+  margin: 30px 0px 30px 10%;
 }
 
 .input-box input {
@@ -60,7 +62,7 @@ body {
   border: none;
   outline: none;
   border: 2px solid lightblue;
-  border-radius: 30px;
+  border-radius: 20px;
   font-size:16px;
   padding: 15px;
   color: white;
@@ -71,9 +73,16 @@ body {
 
 }
 
+.input-box input:focus {
+  border-color: lime;
+  border-width: 3px;
+}
+
 .wrapper .btn {
-  width: 100%;
+  margin-left: 20%;
+  width: 60%;
   height: 50px;
+  padding-top:3%;
   background-color: lightblue;
   border: none;
   outline: none;
@@ -81,45 +90,48 @@ body {
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
-  transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
-}
-/* 
-.btn:hover {
-  transition-duration: 0.2s;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
 }
 
 .btn:after {
   content: "";
   display: block;
-  transition: all 0.2s;
-  box-shadow: 0 0 10px 4px white;
-  opacity: 100;
+  background: blue;
+  position: relative;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
 }
 
 .btn:active:after {
-  box-shadow: 0 0 0 0 white;
+  transition: 0s;
+  opacity: 1;
 }
 
-.btn:active {
-  top: 1px;
-} */
 
 .wrapper .register-link {
   text-align: center;
   margin: 20px;
   color: white;
   font-size: 15px;
-
 }
 
 .register-link p a {
   color: white;
   text-decoration: none;
   font-weight: 600;
-
 }
 
 .register-link p a:hover {
   text-decoration: underline;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: white;
 }

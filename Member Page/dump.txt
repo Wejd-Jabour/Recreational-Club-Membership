@@ -1,0 +1,132 @@
+    <div id="CalendarSection" style="display: block;">
+
+        <h1>Calendar</h1>
+        
+        <button onclick="previousMonth()"> < Previous Month</button>
+        <button onclick="nextMonth()">Next Month >  </button>
+        <br>
+        <p>April</p>
+        <div id="calendar"></div>
+    </div>
+
+    
+
+#CalendarSection {
+    text-align: left; 
+    background-color: red;
+}
+
+#calendar {
+    font-family: Arial, sans-serif;
+    position: absolute;
+    left: 10%;
+    
+    /* Move back by 50% of its own width */
+    transform: translateX(-50%); 
+    width: 200px;
+}
+
+
+
+
+
+
+
+//Calendar Section Settings
+
+let currentYear;
+let currentMonth;
+
+function generateCalendar(year, month) {
+    const calendarDiv = document.getElementById('calendar');
+    
+    // Clear previous calendar
+    calendarDiv.innerHTML = '';
+    
+    // Create a new date object
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    
+    // Create table element
+    const table = document.createElement('table');
+    
+    // Create table header
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    daysOfWeek.forEach(day => {
+        const th = document.createElement('th');
+        th.textContent = day;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    
+    // Create table body
+    const tbody = document.createElement('tbody');
+    
+    let currentDate = new Date(firstDay);
+    let currentMonthString = currentDate.toLocaleString("default", {month: "long"});
+    // document.getElementById("current-month").innerHTML = currentMonthString;
+    console.log(currentMonthString);
+    let currentDateIndex = 0;
+    
+    while (currentDate <= lastDay) {
+        const newRow = document.createElement('tr');
+        for (let i = 0; i < 7; i++) {
+            const cell = document.createElement('td');
+            if (currentDateIndex >= firstDay.getDay() && currentDate.getMonth() === month) {
+                cell.textContent = currentDate.getDate();
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            newRow.appendChild(cell);
+            currentDateIndex++;
+        }
+        tbody.appendChild(newRow);
+    }
+    
+    table.appendChild(tbody);
+    calendarDiv.appendChild(table);
+}
+
+
+
+
+function onPageLoad() {
+    // Get current year and month
+    const now = new Date();
+    currentYear = now.getFullYear();
+    currentMonth = now.getMonth();
+    generateCalendar(currentYear, currentMonth);
+    
+}
+
+// Attach event listener to the DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', onPageLoad);
+
+
+
+
+function nextMonth() {
+    if (currentMonth === 11) {
+        currentYear++;
+        currentMonth = 0;
+    } else {
+        currentMonth++;
+    }
+    generateCalendar(currentYear, currentMonth);
+}
+
+
+function previousMonth() {
+    if (currentMonth === 0) {
+        currentYear--;
+        currentMonth = 11;
+    } else {
+        currentMonth--;
+    }
+    generateCalendar(currentYear, currentMonth);
+}
+
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Member Page</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='memberPage.css'>
+    <script src='memberPage.js'></script>
+</head>
+<body>
+    <div class="main">
+
+        <img class="bg-img-members" style="width: 100%; height: 50vh; object-fit: cover;" src="./exercise.webp">
+        
+        <div style="height: 5%; border: none; padding: none; margin: none;">
+            <!-- <img class="bg-img-members" style="width: 100%; height: 50vh; object-fit: cover;" src="./exercise.webp"> -->
+            <div class="bg-text">
+                <h1>Welcome to the members page!</h1>
+                <p>Use this page to book practices and keep track of payments</p>
+            </div>
+        </div>
+        <!-- <div class="bg-img"></div> -->
+
+        <div class="section-containers">
+            <h3 style="margin-bottom: 0;">Currently booked practices</h3>
+            <ul style="margin-top: 0;">
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        
+        <div class="section-containers">
+            <h3 style="margin-bottom: 0;">Number of missed practices:</h3>
+            <ul style="margin-top: 0;">
+                <li></li>
+            </ul>
+            <h3 style="margin-bottom: 0;">Missed payments:</h3>
+            <ul style="margin-top: 0;">
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="section-containers" style="text-align: center;">
+            <button class="btn-open-popup" onclick="togglePopup()">Book A Practice</button> 
+            
+            <div id="popupOverlay" class="overlay-container"> 
+                <div class="popup-box"> 
+                    <h2 style="color: black;">Add practices below</h2> 
+                    <form class="form-container"> 
+                        
+                        <div id="add-practices">
+                            <label class="form-label" for="cal-prac-picker">Practice Date:</label>
+                            <div class="">
+                                <input type="date" id="cal-prac-picker" name="trip-start" value="" min="2024-04-05" max="2026-01-01" />
+                                <button class="" type="button" onclick="addPractice()">Add</button> 
+                                <p style="margin-bottom: 0%;">Practices to book:</p>
+                                <ul style="margin-top: 0;" id="practices-to-add"></ul>
+                            </div>
+                            
+                        </div>
+
+                        <!-- <label class="form-label" for="name">Username:</label> 
+                        <input class="form-input" type="text" placeholder="Enter Your Username" id="name" name="name" required> 
+            
+                        <label class="form-label" for="email">Email:</label> 
+                        <input class="form-input" type="email" placeholder="Enter Your Email" id="email" name="email" required>  -->
+            
+                        <button class="btn-add-pracs" type="" onclick="addAllPractices()">Add practices</button> 
+                    </form> 
+                    <button class="btn-close-popup" onclick="togglePopup()">Close</button> 
+
+                </div> 
+            </div> 
+        </div>
+        
+        
+    </div>
+
+
+    
+</body>
+</html>
+
+<!-- 
+    - popup form where member can select date for practice(s) and
+    pay for it
+    - maybe add in sections for practices current member has booked, as well as
+    whether they have miseed attendences, missed payments, etc.
+    - any other stuff i can think of
+
+
+ -->

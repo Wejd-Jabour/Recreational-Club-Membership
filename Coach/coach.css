@@ -28,6 +28,52 @@ html:after {
     padding: 2rem 2rem;
     text-align: center;
 }
+#calendar {
+    font-family: Arial, sans-serif;
+    position: absolute;
+    left: 30%; /* Position 30% from the left */
+    transform: translateX(-50%); /* Move back by 50% of its own width */
+    width: 200px;
+}
+
+#CalendarSection {
+    text-align: center; /* Center the content horizontally */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    background-color: #fff;
+}
+
+td:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+#CalendarSection {
+    text-align: center; /* Center the content horizontally */
+}
+
+input, select {
+    text-align: center;
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
 .title {
 
     background-color:aliceblue;

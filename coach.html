@@ -10,7 +10,7 @@
 </head>
 <body>    
 
-    
+    <script src="coach.js"></script>
     <div class="content-container">
         <div class="title">
             <header>
@@ -24,8 +24,8 @@
             <div class="child"> <!-- sends messages to specified members or to all at once-->
                 <h2>Send Custom Message to Users</h2>
                 <form id="messageForm">
-                    <button class="button"type="submit">Send Message</button> 
-                    <button class="button"type="submit">Send All</button>
+                    <button onclick="storeInput()"class="button"type="submit">Send Message</button> 
+                    <button onclick="storeInput()"class="button"type="submit">Send All</button>
                     <br><br>
 
                     <label for="usernamesInput">Enter member names (comma-separated):</label>
@@ -63,6 +63,16 @@
                 </button>
             </div>
         </div>
+        
+    </div>
+    <div id="CalendarSection" style="display: true;">
+
+        <h1>Calendar</h1>
+        
+        <button onclick="previousMonth()">  Previous Month</button>
+        <button onclick="nextMonth()">Next Month</button>
+        <br>
+        <div id="calendar"></div>
     </div>
     
 </body>

@@ -68,13 +68,30 @@
                     <div class="">
                         <input type="date" id="cal-prac-picker" name="trip-start" value="" min="2024-04-05" max="2026-01-01" />
                         <button class="" type="button" onclick="addPractice()">Add</button> 
-                        <p style="margin-bottom: 0%;">Practices to book:</p>
+                        <p class="form-label" style="margin-bottom: 0%;">Practices to book:</p>
                         <ul style="margin-top: 0;" id="practices-to-add"></ul>
                     </div>
-                    
                 </div>
 
-            
+                <br>
+                <label class="form-label" for="fname">First Name:</label> 
+                <input class="form-input" type="text" placeholder="ex. John" id="fname" name="fname" required> 
+  
+                <label class="form-label" for="lname">Last Name:</label> 
+                <input class="form-input" type="text" placeholder="ex. Smith" id="lname" name="lname" required> 
+
+                <label class="form-label" for="cardnum">Card Number:</label> 
+                <input class="form-input" type="text" placeholder="ex. 1111 2222 3333 4444" id="cardnum" name="cardnum" required> 
+
+                <div style="text-align: left; padding-bottom: 1%; ">
+                    <label class="form-label" for="zipcode">Zipcode:</label> 
+                    <input class="form-input" style="width: 25%;" type="text" placeholder=" " id="zipcode" name="zipcode" required> 
+                    
+                    <label class="form-label" for="cardexpiry" style="margin-left: 2%;">Expiry:</label> 
+                    <input style="width: 10%;" type="number" min="01" max="12" step="1" value="0" required/>
+                    <input style="width: 20%;" type="number" min="1900" max="2099" step="1" value="0" required/>
+                </div>
+
     
                 <button class="btn-add-pracs" type="" onclick="addAllPractices()">Add practices</button> 
             </form> 

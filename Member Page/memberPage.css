@@ -1,192 +1,195 @@
-body, html {
-    height: 100%;
-    padding:0;
-    margin:0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+  margin: 0px;
+  height: 100vh;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
-ul { 
-    text-align: left;
-    list-style-type: circle;
-}
-li {
-    padding-left: 1px;
-    text-indent: 1px;
+.main {
+  display: flex;
+  flex-direction: column;
 }
 
+.bg-img-members {
+  z-index: -10;
+  background-image: url("exercise.webp");
+  filter: blur(5px); -webkit-filter: blur(5px);
+  height: 100%;
 
-.main-container {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    color: white;
-    
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.bg-img {
-    margin: none;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    filter: blur(5px); -webkit-filter: blur(5px);
-}
-
-#welcome-container {
-    /* border: 1px solid red; */
-    width: 100%;
-    position: absolute;
-    top: 5%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-}
-
-#welcome-txt {
-    background-color: #4c6acc;
-    width: 70%;
-    border-radius: 20%;
-
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  border: 3px solid blue;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 1; */
+  width: 80%;
+  padding: 20px;
+  text-align: center;
 }
 
 .sections-container {
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  /* border: 1px solid red; */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .section-container {
-    width: 20%;
-    height: 40vh;
-    background-color: #B2CBF2;
-    border-radius: 10%;
-    position: relative;
-    margin: 2%;
-    /* border: 1px solid blue; */
-    padding: 1%;
+  width: 20%;
+  height: 40vh;
+  background-color: #B2CBF2;
+  border-radius: 3%;
+  position: relative;
+  margin: 2%;
+  border: 1px solid blue;
+  padding: 1%;
 }
 
 
 .btn-open-popup { 
-    margin-top: 2%; margin-bottom: 2%;
-    padding: 12px 24px; 
-    font-size: 18px; 
-    background-color: rgb(83, 120, 133); 
-    color: #fff; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
+  padding: 12px 24px; 
+  margin-top:35px;
+  font-size: 18px; 
+  background-color: rgb(84, 127, 142); 
+  color: #fff; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 } 
 
 .btn-open-popup:hover { 
-    background-color: blue; 
+  background-color: blue; 
 } 
 
 .overlay-container { 
-    display: none; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0, 0, 0, 0.6); 
-    justify-content: center; 
-    align-items: center; 
-    opacity: 0; 
-    transition: opacity 0.3s ease; 
-    font-family: Arial, sans-serif; 
+  display: none; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0, 0, 0, 0.6); 
+  justify-content: center; 
+  align-items: center; 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+  font-family: Arial, sans-serif; 
 } 
 
 .popup-box { 
-    background: #fff; 
-    padding: 24px; 
-    border-radius: 12px; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
-    width: 320px; 
-    text-align: center; 
-    opacity: 0; 
-    transform: scale(0.8); 
-    animation: fadeInUp 0.5s ease-out forwards; 
+  background: #fff; 
+  padding: 24px; 
+  border-radius: 12px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+  width: 320px; 
+  text-align: center; 
+  opacity: 0; 
+  transform: scale(0.8); 
+  animation: fadeInUp 0.5s ease-out forwards; 
 } 
 
 .form-container { 
-    display: flex; 
-    flex-direction: column; 
+  display: flex; 
+  flex-direction: column; 
 } 
 
 .form-label { 
-    margin-bottom: 10px; 
-    font-size: 12px; 
-    color: #444; 
-    font-weight: bold;
-    text-align: left; 
+  margin-bottom: 10px; 
+  font-size: 16px; 
+  color: #444; 
+  font-weight: bold;
+  text-align: left; 
 } 
 
 .form-input { 
-    padding: 10px; 
-    margin-bottom: 20px; 
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
-    font-size: 12px; 
-    width: 100%; 
-    box-sizing: border-box; 
+  padding: 10px; 
+  margin-bottom: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  font-size: 16px; 
+  width: 100%; 
+  box-sizing: border-box; 
 } 
 
 #add-practices {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+ul { 
+  text-align: left;
+  list-style-type: circle;
+}
+li {
+  padding-left: 1px;
+  text-indent: 1px;
 }
 
 .btn-add-pracs, 
 .btn-close-popup { 
-    padding: 12px 24px; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
+  padding: 12px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
 } 
 
 .btn-add-pracs { 
-    background-color: lightblue; 
-    color: #fff; 
+  background-color: rgb(89, 214, 255); 
+  color: #fff; 
+  font-weight:bold;
 } 
 
 .btn-close-popup { 
-    margin-top: 12px; 
-    background-color: lightblue; 
-    color: #fff; 
+  margin-top: 12px; 
+  background-color: rgb(89, 214, 255); 
+  color: #fff; 
+  font-weight:bold;
 } 
 
 .btn-add-pracs:hover, 
 .btn-close-popup:hover { 
-    background-color: blue; 
+  background-color: blue; 
 } 
 
 .prac-rem-btn:hover {
-    background-color: blue;
+  background-color: blue;
 }
 
+/* Keyframes for fadeInUp animation */ 
 @keyframes fadeInUp { 
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-    } 
+  from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+  } 
 
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    } 
+  to { 
+      opacity: 1; 
+      transform: translateY(0); 
+  } 
 } 
 
+/* Animation for popup */ 
 .overlay-container.show { 
-    display: flex; 
-    opacity: 1; 
+  display: flex; 
+  opacity: 1; 
 } 
-

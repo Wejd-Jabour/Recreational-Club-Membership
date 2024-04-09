@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Member Log Page</title>
     <style>
-		body{
-			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-			}
+	body {
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	}
         table {
             border-collapse: collapse;
             width: 100%;

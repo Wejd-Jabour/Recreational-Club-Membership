@@ -27,20 +27,18 @@
     </style>
 </head>
 <body>
-<script>
 
-</script>
 <?php
-    $hostname = "localhost";
-    $username = "agewarge";
-    $password = "EgXa9I57";
-    $database = "agewarge";
+    $hostname = "iteration3-database-cps-406-assignment.a.aivencloud.com";
+    $username = "avnadmin";
+    $password = "AVNS_VfnVxw6gijjwK7cRuXJ";
+    $database = "defaultdb";
 
     $connect = mysqli_connect($hostname, $username, $password, $database);
 
     if ($connect) 
     {
-        print("Connected to <b>agewarge</b> <br>");
+        print("Connected to <b>database</b>! <br>");
     } else {
         print("Connection Failed <br>");
     }
@@ -186,8 +184,6 @@
     
     else 
     {
-
-        
         echo "0 results";
     }
 

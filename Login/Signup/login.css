@@ -14,6 +14,24 @@ body {
   backdrop-filter: blur(7px);
 }
 
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  border: 3px solid blue;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 1; */
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+
 .content-container {
   display: flex;
   flex-direction: column;
@@ -36,11 +54,12 @@ body {
   width: 500px;
   /* height: 400px; */
   padding: 20px;
+  /* margin-top:3%; */
   background: darkblue;
   color: white;
   border-radius: 15px;
-  
 }
+
 
 .wrapper h1 {
   font-size: 36px;
@@ -76,6 +95,11 @@ body {
 .input-box input:focus {
   border-color: lime;
   border-width: 3px;
+}
+
+[list="role-options"] {
+  background-color: blue;
+  color:brown
 }
 
 .wrapper .btn {

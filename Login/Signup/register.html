@@ -9,39 +9,51 @@
   
 </head>
 
-
 <body>
 
-<div class="content-container">
-  <div class="title">
-    <p> Recreation House </p>
-  </div>
+  <div style="height: 5%; border: none; padding: none; margin-top: none;">
 
-  <div class="wrapper"> 
-    <form action="">
-      <h1> Welcome! Sign Up Below </h1>
-      <div class="input-box">
-        <input type="email" placeholder="Email Address" required>
-      </div>
-      <div class="input-box">
-        <input type="text" placeholder="Date of Birth" onfocus="this.type='date'" required>
-      </div>
-      <div class="input-box">
-        <input type="text" placeholder="Username" required>
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Password" required>
-      </div>
+    <div style="margin-top:-3%" class="bg-text">
+        <h1>Recreation House</h1>
+    </div>
     
-      <button type="submit" class="btn"> Submit </button>
-
-      <div class="register-link">
-        <p>Already have an account? <a href="./login.html">Log In Now</a> </p>
-      </div>
-      
-    </form>
   </div>
-</div>
+
+  <div class="content-container">
+
+    <div style="margin-top:10%;" class="wrapper"> 
+      <form action="">
+        <h1> Welcome! Sign Up Below </h1>
+        <div class="input-box">
+          <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-box">
+          <input type="text" max="2007-01-01" placeholder="Date of Birth" onfocus="this.type='date'" required>
+        </div>
+        <div class="input-box">
+          <input list="role-options" id="roles" name="role" placeholder="Role/Position" required>
+          <datalist id = "role-options">
+            <option value="Member">
+            <option value="Coach">
+            <option value="Treasurer">
+          </datalist>
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" required>
+        </div>
+      
+        <button type="submit" class="btn"> Submit </button>
+
+        <div class="register-link">
+          <p>Already have an account? <a href="./login.html">Log In Now</a> </p>
+        </div>
+        
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>

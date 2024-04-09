@@ -1,78 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width-device-width, initial-scale=1.0">
-  <title>Recreational Club</title>
-  <link rel="stylesheet" href="coach.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
-  
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Recreation House</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='coach.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <script src='coach.js'></script>
 </head>
-<body>    
 
-    <script src="coach.js"></script>
-    <div class="content-container">
-        <div class="title">
-            <header>
-                <h1> Recreational Club Membership </h1>
-                Welcome back coach!
-                <hr>
-            </header>
-        </div>
+<body>
 
-        <div class="centered">
-            <div class="child"> <!-- sends messages to specified members or to all at once-->
-                <h2>Send Custom Message to Users</h2>
-                <form id="messageForm">
-                    <button class="button"type="submit">Send Message</button> 
-                    <button class="button"type="submit">Send All</button>
-                    <br><br>
+  <div class="main">
 
-                    <label for="usernamesInput">Enter member names (comma-separated):</label>
-                    <input class="input"type="text" id="usernamesInput" name="usernames" placeholder="e.g., member1, member2, member3">
-                    <br><br>
-
-                    <label for="messageInput">Enter your message:</label><br>
-                    <textarea id="messageInput" name="message" rows="4" cols="50" required></textarea><br><br>
-
-                </form>
-            </div>
-            
-            <div class="child"> <!-- sends a reminder message to specified members who are behind on payments-->
-                <h2>Send Remainder for Payment</h2>
-                <form id="messageForm">
-                    
-                    <button class="button"type="submit">Send Remainder</button>
-                    <br><br>
-                    <label for="usernamesInput">Enter member names (comma-separated):</label><br>
-                    <input class="input"type="text" id="usernamesInput" name="usernames" placeholder="e.g., member1, member2, member3" required>
+    <img class="bg-img-members" style="width: 100%; height: 40vh; object-fit: cover;" src="./exercise.webp">
     
-                </form>
-            </div>
-            <div class="child"> <!-- once button clicked shows list of all members coach has-->
-                <h2>Show Members</h2>
-                
-                <button style = "position:relative; top:40px;"class="button">
-                    Member List
-                </button>
-            </div>
-            <div class="child"><!-- once button clicked shows list of all members that have missed a payment-->
-                <h2>Behind on Payment</h2>
-                <button style = "position:relative; top:40px;"class="button">
-                    Member List
-                </button>
-            </div>
+    <div style="font-family: Trebuchet MS, sans-serif; height: 5%; border: none; padding: none; margin: none;">
+        <!-- <img class="bg-img-members" style="width: 100%; height: 50vh; object-fit: cover;" src="./exercise.webp"> -->
+        <div class="bg-text">
+            <h1 style="font-size:60px;">Welcome back, Coach!</h1>
+            <p>View Your Schedule and Manage Members Below</p>
         </div>
-        <div id="CalendarSection" style="display: true;">
+  </div>
+    <!-- <div class="bg-img"></div> -->
 
-            <h1>Calendar</h1>
-    
-            <button onclick="previousMonth()">  Previous Month</button>
-            <button onclick="nextMonth()">Next Month</button>
+  <div class="sections-container" style="text-align: center;">
+      
+      <div class="section-container">
+          <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Message to User(s)</h3>
+          <form id="messageForm">
+        
+            <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
+            <input class="input" type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3">
+            <br><br>
+
+            <label for="messageInput">Enter your message:</label> <br><br>
+            <textarea id="messageInput" name="message" rows="2" cols="30" required></textarea> <br><br>
+
+            <button class="form-button" type="submit">Send Message </button> 
+            <button class="form-button" type="submit">Send To All </button>
             <br>
-            <div id="calendar"></div>
-        </div>
-    </div>
-    
+
+        </form>
+          <!-- <ul style="margin-top: 25px;">
+              <li></li>
+          </ul> -->
+      </div>
+
+      <div class="section-container">
+          <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Payment Reminder</h3>
+          <form id="messageForm">
+            <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
+            <input class="input"type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3" required>
+
+            <button class="reminder-button"type="submit">Send Reminder</button>
+
+        </form>
+          <!-- <ul style="margin-top: 25px;">
+              <li></li>
+          </ul> -->
+      </div>
+
+      <div class="section-container">
+          <button type="View" class="form-button" style="margin-bottom: 0; margin-top: 0;">View Members?</button>
+          <ul style="margin-top: 25px;">
+              <li></li>
+          </ul>
+      </div>
+
+      <div class="section-container">
+        <button type="View" class="form-button" style="margin-bottom: 0; margin-top: 0;">View Members Behind on Payment?</button>
+        <ul style="margin-top: 10px;">
+          <li></li>
+      </ul>
+      </div>
+
+  </div>
+
+  <div id="CalendarSection" style="margin-top:35%; display: true;">
+
+    <h1>Schedule</h1>
+
+    <button onclick="previousMonth()">  Previous Month</button>
+    <button onclick="nextMonth()">Next Month</button>
+    <br>
+    <div id="calendar"></div>
+</div>
+
+
 </body>
 </html>

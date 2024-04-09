@@ -27,7 +27,9 @@
     </style>
 </head>
 <body>
+<script>
 
+</script>
 <?php
     $hostname = "localhost";
     $username = "agewarge";
@@ -184,6 +186,8 @@
     
     else 
     {
+
+        
         echo "0 results";
     }
 

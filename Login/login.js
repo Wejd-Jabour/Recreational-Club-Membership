@@ -17,9 +17,11 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 
+
 document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault(); 
     var username = document.getElementById('username').value;
+
     var password = document.getElementById('password').value;
 
     CheckLogin(username, password);
@@ -37,10 +39,10 @@ function CheckLogin(username, password) {
                     var user = members[memberKey].Username;
                     var pass = members[memberKey].Password;
                     var role = members[memberKey].Role;
-                    var name = memberKey;
+                    var nam = memberKey;
                     
                     if(user === username && pass === password) {
-                        PageSwitch(role, name);
+                        PageSwitch(role, nam);
                         return; // Exit the loop once a match is found
                     }
                 }
@@ -51,11 +53,13 @@ function CheckLogin(username, password) {
 }
 
 // Function to switch pages based on role
-function PageSwitch(role) {
+function PageSwitch(role, nam) {
     console.log("Inside PageSwitch, role: ", role); // Add this line for debugging
     
-    localStorage.setItem('username', username);
-    localStorage.setItem('name', name);
+    // localStorage.setItem('name', nam);
+    // localStorage.setItem('username', username);
+    // console.log(username);
+
     
     if (role === "Member") {
         console.log("Redirecting to memberHome.html"); // Add this line for debugging

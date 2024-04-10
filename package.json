@@ -1,4 +1,8 @@
 {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  },
   "dependencies": {
     "firebase": "^10.10.0"
   }

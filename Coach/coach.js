@@ -1,3 +1,24 @@
+// Firebase configuration
+const firebaseConfig = {
+    measurementId: "G-NB2W85MSVY",
+    apiKey: "AIzaSyAip6F4bVauBOy-O-w2Fr-nDAng_Z7ZMHQ",
+    authDomain: "iteration3-e3d7f.firebaseapp.com",
+    databaseURL: "https://iteration3-e3d7f-default-rtdb.firebaseio.com/",
+    projectId: "iteration3-e3d7f",
+    storageBucket: "iteration3-e3d7f.appspot.com",
+    messagingSenderId: "669362709701",
+    appId: "1:669362709701:web:daea737d76afc30d967cac",
+    measurementId: "G-YYTV94XHX6"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+
+
+
+
 //Calendar Section Settings
 
 let currentYear;

@@ -24,6 +24,31 @@ const db = firebase.database();
 let currentYear;
 let currentMonth;
 
+
+function addMessage(username, message) {
+    
+    // Reference to the user's messages node
+    var ref = db.ref("Member/" + username + "/Message");
+
+    // Create a new message entry with a unique key
+    var newMessageRef = ref.push();
+
+    // Set the message content
+    newMessageRef.set({
+        text: message,
+    });
+    console.log("IN addMessage");
+    console.log(username);
+}
+
+// function addMessage(name,message) {
+
+//     var ref = db.ref("Member/" + name);
+//     ref.update({
+//         Message: message
+//     });
+//   }
+
 // function generateCalendar(year, month) {
 //     const calendarDiv = document.getElementById('calendar');
     
@@ -216,7 +241,8 @@ function revealCalendar() {
 }
 
 
-function storeInput() {
+function storeInput() { // usernames are actually names!
+
     // Step 1: Get a reference to the input element
     var usernameElement = document.getElementById('usernamesInput');
     var messageElement = document.getElementById('messageInput');
@@ -226,8 +252,20 @@ function storeInput() {
     // Step 3: Store the value as needed
     // For example, you can store it in a variable
     //var storedValue = usernameInput;
-    console.log("Stored value:", usernameInput);
-    console.log("Stored value:", messageInput);
+
+    var usernamesArray = usernameInput.split(',');
+
+// Trim whitespace from each username and create a new array
+    var cleanedUsernames = usernamesArray.map(function(username) {
+    return username.trim();
+    });
+    console.log(cleanedUsernames);
+    for (var i = 0; i < cleanedUsernames.length; i++) {
+        var username = cleanedUsernames[i];
+        addMessage(username, messageInput);
+        
+    }
+    //addMessage(usernameInput,messageInput);
 }
 
 function sendReminder(){

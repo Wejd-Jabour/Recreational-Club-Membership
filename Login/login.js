@@ -37,9 +37,10 @@ function CheckLogin(username, password) {
                     var user = members[memberKey].Username;
                     var pass = members[memberKey].Password;
                     var role = members[memberKey].Role;
+                    var name = memberKey;
                     
                     if(user === username && pass === password) {
-                        PageSwitch(role);
+                        PageSwitch(role, name);
                         return; // Exit the loop once a match is found
                     }
                 }
@@ -52,6 +53,9 @@ function CheckLogin(username, password) {
 // Function to switch pages based on role
 function PageSwitch(role) {
     console.log("Inside PageSwitch, role: ", role); // Add this line for debugging
+    
+    localStorage.setItem('username', username);
+    localStorage.setItem('name', name);
     
     if (role === "Member") {
         console.log("Redirecting to memberHome.html"); // Add this line for debugging

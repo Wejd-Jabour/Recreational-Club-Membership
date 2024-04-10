@@ -50,19 +50,26 @@ function removePractice() {
 }
 
 
-function addAllPractices() {
+// function addAllPractices(event) {
+//     event.preventDefault();
 
 
-    // var listofPracticeDates = document.getElementById("practices-to-add");
+//     // var listofPracticeDates = document.getElementById("practices-to-add");
 
-    var datesToAdd = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
-        console.log(li.textContent)
-    });
+//     // var datesToAdd = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
+//     //     console.log(li.textContent)
+//     // });
 
-    // console.log(listofPracticeDates);
-    document.getElementById("cal-prac-picker").value = null;
-    return;
-}
+//     // console.log(listofPracticeDates);
+//     var date = document.getElementById('practices-to-add').value;
+//     console.log(date);
+//     pracUpdater(date);
+
+
+
+//     document.getElementById("cal-prac-picker").value = null;
+//     return;
+// }
 
 
 
@@ -146,45 +153,66 @@ window.onload = function() {
 };
 
 
-// const firebaseConfig = {
-//     measurementId: "G-NB2W85MSVY",
-//     apiKey: "AIzaSyAip6F4bVauBOy-O-w2Fr-nDAng_Z7ZMHQ",
-//     authDomain: "iteration3-e3d7f.firebaseapp.com",
-//     databaseURL: "https://iteration3-e3d7f-default-rtdb.firebaseio.com/",
-//     projectId: "iteration3-e3d7f",
-//     storageBucket: "iteration3-e3d7f.appspot.com",
-//     messagingSenderId: "669362709701",
-//     appId: "1:669362709701:web:daea737d76afc30d967cac",
-//     measurementId: "G-YYTV94XHX6"
-// };
-
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-
-// const db = firebase.database();
-
-document.getElementById('book-practice').addEventListener('addPrac', function(event) {
-    event.preventDefault(); 
-    var date = document.getElementById('cal-prac-picker').value;
-
-    pracUpdater(date);
-  });
 
 
 
-  function pracUpdater(date) {
-    var starCountRef2 = db.ref('Member/'+globName+'/Practices');
-    starCountRef2.on('value', (snapshot) => {
-    curr = snapshot.val();
+// document.getElementById('book-practice').addEventListener('addPrac', function(event) {
+//     event.preventDefault(); 
+    
+//     var date = document.getElementById('practices-to-add').value;
+//     console.log(date);
+//     pracUpdater(date);
+//   });
 
-    db.ref('Member/'+globName).set({
+
+
+//   function pracUpdater(date) {
+//     var starCountRef2 = db.ref('Member/'+globName+'/Practices');
+//     starCountRef2.on('value', (snapshot) => {
+//     curr = snapshot.val();
+//     console.log(curr);
+
+//     db.ref('Member/'+globName).set({
         
-        Practices: curr + date
-    })
+//         Practices: curr + date
+//         })
 
+//     })
 
-  })
+// //   location.reload();
 
-  location.reload();
+//   }
 
-  }
+function addAllPractices(event) {
+    event.preventDefault();
+
+    var datesToAdd = [];
+    var listItems = document.querySelectorAll('#practices-to-add li');
+    listItems.forEach(function (li) {
+        datesToAdd.push(li.textContent.trim());
+    });
+
+    datesToAdd.forEach(function (date) {
+        pracUpdater(date);
+    });
+
+    document.getElementById("cal-prac-picker").value = null;
+    return;
+}
+
+function pracUpdater(date) {
+    var starCountRef2 = db.ref('Member/' + globName + '/Practices');
+    starCountRef2.once('value', function (snapshot) {
+        var curr = snapshot.val() || ""; // Initialize to empty string if null
+        var updatedPractices = curr + " " + date; // Concatenate new date with existing practices
+
+        db.ref('Member/' + globName).update({
+            Practices: updatedPractices
+        }).then(function () {
+            console.log("Practice updated successfully");
+            location.reload(); // Reload the page after successful update
+        }).catch(function (error) {
+            console.error("Error updating practice: ", error);
+        });
+    });
+}

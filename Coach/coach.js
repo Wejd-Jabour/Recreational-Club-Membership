@@ -108,6 +108,13 @@ function storeInput() {
     console.log("Stored value:", messageInput);
 }
 
+function sendReminder(){
+    var usernameElement = document.getElementById('usernamesInput')
+    var usernameInput = usernameElement.value;
+
+    //sendreminder(usernameInput)
+}
+
 function addPractice() {
     var practiceDate = document.getElementById("cal-prac-picker").value;
     if (practiceDate == "") {

@@ -64,11 +64,12 @@ function addAllPractices() {
     return;
 }
 
+
+
+var globName;
+
 window.onload = function() {
     
-    const username = userTest;
-    console.log(username);
-    console.log("testqw");
     
     const firebaseConfig = {
         measurementId: "G-NB2W85MSVY",
@@ -86,6 +87,12 @@ window.onload = function() {
     firebase.initializeApp(firebaseConfig);
     
     const db = firebase.database();
+    var user;
+
+    var starCountRef = db.ref('Current/Username');
+        starCountRef.on('value', (snapshot) => {
+        user = snapshot.val();
+});
     
     const dbRef = firebase.database().ref();
     
@@ -96,7 +103,7 @@ window.onload = function() {
 
         for (let memberKey in members) {
             if (members.hasOwnProperty(memberKey)) {
-                let user = members[memberKey].Username;
+                let username = members[memberKey].Username;
                 let pass = members[memberKey].Password;
                 let role = members[memberKey].Role;
                 let name = memberKey;
@@ -105,29 +112,30 @@ window.onload = function() {
 
                 
 
-                if (user === username) {
+                if (username === user) {
                     // Fetch and display practices
                     console.log(name);
+                    globName = name;
                     dbRef.child('Member/' + name + '/Practices').once('value', (practicesSnapshot) => {
                         const practices = practicesSnapshot.val();
                         const practicesUl = document.getElementById('upcoming-practices');
                         practicesUl.innerHTML = ''; // Clear existing entries
-                        for (let date in practices) {
-                            let li = document.createElement('li');
-                            li.textContent = date; // Assuming the date is the key
-                            practicesUl.appendChild(li);
-                        }
+                        
+                        let li = document.createElement('li');
+                        li.textContent = practices; // Assuming the date is the key
+                        practicesUl.appendChild(li);
+                        
                     });
 // Fetch and display messages
                     dbRef.child('Member/' + name + '/Message').once('value', (messagesSnapshot) => {
                         const messages = messagesSnapshot.val();
                         const messagesDiv = document.getElementById('messages');
                         messagesDiv.innerHTML = ''; // Clear existing entries
-                        for (let message in messages) {
-                            let p = document.createElement('p');
-                            p.textContent = messages[message]; // Assuming the message itself is the value
-                            messagesDiv.appendChild(p);
-                        }
+                        
+                        let p = document.createElement('p');
+                        p.textContent = messages; // Assuming the message itself is the value
+                        messagesDiv.appendChild(p);
+                        
                     });
 
                     break; // Exit the loop once the matching user is processed
@@ -138,20 +146,45 @@ window.onload = function() {
 };
 
 
-
+// const firebaseConfig = {
+//     measurementId: "G-NB2W85MSVY",
+//     apiKey: "AIzaSyAip6F4bVauBOy-O-w2Fr-nDAng_Z7ZMHQ",
+//     authDomain: "iteration3-e3d7f.firebaseapp.com",
+//     databaseURL: "https://iteration3-e3d7f-default-rtdb.firebaseio.com/",
+//     projectId: "iteration3-e3d7f",
+//     storageBucket: "iteration3-e3d7f.appspot.com",
+//     messagingSenderId: "669362709701",
+//     appId: "1:669362709701:web:daea737d76afc30d967cac",
+//     measurementId: "G-YYTV94XHX6"
+// };
 
 // // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 
 // const db = firebase.database();
 
-// document.getElementById('book-practice').addEventListener('addPrac', function(event) {
-//     event.preventDefault(); 
-//     var date = document.getElementById('cal-prac-picker').value;
+document.getElementById('book-practice').addEventListener('addPrac', function(event) {
+    event.preventDefault(); 
+    var date = document.getElementById('cal-prac-picker').value;
 
-//     pracUpdater(date);
-//   });
+    pracUpdater(date);
+  });
 
-//   function pracUpdater(date) {
 
-//   }
+
+  function pracUpdater(date) {
+    var starCountRef2 = db.ref('Member/'+globName+'/Practices');
+    starCountRef2.on('value', (snapshot) => {
+    curr = snapshot.val();
+
+    db.ref('Member/'+globName).set({
+        
+        Practices: curr + date
+    })
+
+
+  })
+
+  location.reload();
+
+  }

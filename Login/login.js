@@ -42,6 +42,9 @@ function CheckLogin(username, password) {
                     var nam = memberKey;
                     
                     if(user === username && pass === password) {
+                        db.ref('Current').set({
+                            Username: username,
+                        })
                         PageSwitch(role, nam);
                         return; // Exit the loop once a match is found
                     }

@@ -23,13 +23,13 @@
   <div class="content-container">
 
     <div class="wrapper"> 
-      <form action="">
+      <form id="login-form" action="">
         <h1> Welcome! Sign In Below </h1>
         <div class="input-box">
-          <input type="text" placeholder="Username" required>
+          <input id="username" type="text" placeholder="Username" required>
         </div>
         <div class="input-box">
-          <input type="password" placeholder="Password" required>
+          <input id="password" type="password" placeholder="Password" required>
         </div>
       
         <button type="submit" class="btn"> Login </button>
@@ -41,6 +41,8 @@
       </form>
     </div>
   </div>
-
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>

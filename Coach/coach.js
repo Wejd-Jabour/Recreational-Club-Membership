@@ -24,23 +24,68 @@ const db = firebase.database();
 let currentYear;
 let currentMonth;
 
+// function generateCalendar(year, month) {
+//     const calendarDiv = document.getElementById('calendar');
+    
+//     // Clear previous calendar
+//     calendarDiv.innerHTML = '';
+    
+//     // Create a new date object
+//     const firstDay = new Date(year, month, 1);
+//     const lastDay = new Date(year, month + 1, 0);
+    
+//     // Create table element
+//     const table = document.createElement('table');
+    
+//     // Create table header
+//     const thead = document.createElement('thead');
+//     const headerRow = document.createElement('tr');
+//     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+//     daysOfWeek.forEach(day => {
+//         const th = document.createElement('th');
+//         th.textContent = day;
+//         headerRow.appendChild(th);
+//     });
+//     thead.appendChild(headerRow);
+//     table.appendChild(thead);
+    
+//     // Create table body
+//     const tbody = document.createElement('tbody');
+    
+//     let currentDate = new Date(firstDay);
+//     let currentDateIndex = 0;
+    
+//     while (currentDate <= lastDay) {
+//         const newRow = document.createElement('tr');
+//         for (let i = 0; i < 7; i++) {
+//             const cell = document.createElement('td');
+//             if (currentDateIndex >= firstDay.getDay() && currentDate.getMonth() === month) {
+//                 cell.textContent = currentDate.getDate();
+//                 currentDate.setDate(currentDate.getDate() + 1);
+//             }
+//             newRow.appendChild(cell);
+//             currentDateIndex++;
+//         }
+//         tbody.appendChild(newRow);
+//     }
+    
+//     table.appendChild(tbody);
+//     calendarDiv.appendChild(table);
+// }
+
 function generateCalendar(year, month) {
     const calendarDiv = document.getElementById('calendar');
-    
-    // Clear previous calendar
-    calendarDiv.innerHTML = '';
-    
-    // Create a new date object
+    calendarDiv.innerHTML = ''; // Clear previous calendar
+
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
-    
-    // Create table element
+
     const table = document.createElement('table');
-    
-    // Create table header
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    // Create table header
     daysOfWeek.forEach(day => {
         const th = document.createElement('th');
         th.textContent = day;
@@ -48,27 +93,31 @@ function generateCalendar(year, month) {
     });
     thead.appendChild(headerRow);
     table.appendChild(thead);
-    
+
     // Create table body
     const tbody = document.createElement('tbody');
-    
     let currentDate = new Date(firstDay);
     let currentDateIndex = 0;
-    
+
     while (currentDate <= lastDay) {
         const newRow = document.createElement('tr');
         for (let i = 0; i < 7; i++) {
             const cell = document.createElement('td');
+            const cellList = document.createElement('ul');
+            cellList.id = 'attending'; // Create an <ul> for list items
             if (currentDateIndex >= firstDay.getDay() && currentDate.getMonth() === month) {
                 cell.textContent = currentDate.getDate();
+                const dateItem = document.createElement('li'); // Create an <li> element for the date
+                cellList.appendChild(dateItem); // Append date item to the list
                 currentDate.setDate(currentDate.getDate() + 1);
             }
+            cell.appendChild(cellList); // Append the list to the cell
             newRow.appendChild(cell);
             currentDateIndex++;
         }
         tbody.appendChild(newRow);
     }
-    
+
     table.appendChild(tbody);
     calendarDiv.appendChild(table);
 }
@@ -182,16 +231,22 @@ function removePractice() {
 }
 
 
-function addAllPractices() {
+
+const dbRef = firebase.database().ref();
+    
+dbRef.child('Member').once('value', (snapshot) => {
+    const members = snapshot.val();
+    console.log(members);
 
 
-    // var listofPracticeDates = document.getElementById("practices-to-add");
+    for (let memberKey in members) {
+        
+        const practicesUl = document.getElementById('memberList');
+        
+        let li = document.createElement('li');
+        li.textContent = memberKey; // Assuming the date is the key
+        practicesUl.appendChild(li);
+        
+    };
 
-    var datesToAdd = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
-        console.log(li.textContent)
-    });
-
-    // console.log(listofPracticeDates);
-    document.getElementById("cal-prac-picker").value = null;
-    return;
-}
+}).catch(error => console.error("Error fetching member data: ", error));

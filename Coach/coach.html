@@ -6,99 +6,101 @@
     <title>Recreation House</title>
     <link rel='stylesheet' type='text/css' media='screen' href='coach.css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
-    <script src='coach.js'></script>
 </head>
 
 <body>
-
-  <div class="main">
-
-    <img class="bg-img-members" style="width: 100%; height: 40vh; object-fit: cover;" src="./exercise.webp">
     
-    <div style="font-family: Trebuchet MS, sans-serif; height: 5%; border: none; padding: none; margin: none;">
-        <!-- <img class="bg-img-members" style="width: 100%; height: 50vh; object-fit: cover;" src="./exercise.webp"> -->
-        <div class="bg-text">
-            <h1 style="font-size:60px;">Welcome back, Coach!</h1>
-            <p>View Your Schedule and Manage Members Below</p>
-        </div>
-  </div>
-    <!-- <div class="bg-img"></div> -->
-
-  <div class="sections-container" style="text-align: center;">
-      
-      <div class="section-container">
-          <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Message to User(s)</h3>
-          <form id="messageForm">
+    <div class="main">
         
-            <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
-            <input class="input" type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3">
-            <br><br>
-
-            <label for="messageInput">Enter your message:</label> <br><br>
-            <textarea id="messageInput" name="message" rows="2" cols="30" required></textarea> <br><br>
-
-            <button onclick="storeInput()"class="form-button" type="submit">Send Message </button> 
-            <button onclick="storeInput()"class="form-button" type="submit">Send To All </button>
+        <img class="bg-img-members" style="width: 100%; height: 40vh; object-fit: cover;" src="./exercise.webp">
+        
+        <div style="font-family: Trebuchet MS, sans-serif; height: 5%; border: none; padding: none; margin: none;">
+            <!-- <img class="bg-img-members" style="width: 100%; height: 50vh; object-fit: cover;" src="./exercise.webp"> -->
+            <div class="bg-text">
+                <h1 style="font-size:60px;">Welcome back, Coach!</h1>
+                <p>View Your Schedule and Manage Members Below</p>
+            </div>
+        </div>
+        <!-- <div class="bg-img"></div> -->
+        
+        <div class="sections-container" style="text-align: center;">
+            
+            <div class="section-container">
+                <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Message to User(s)</h3>
+                <form id="messageForm">
+                    
+                    <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
+                    <input class="input" type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3">
+                    <br><br>
+                    
+                    <label for="messageInput">Enter your message:</label> <br><br>
+                    <textarea id="messageInput" name="message" rows="2" cols="30" required></textarea> <br><br>
+                    
+                    <button onclick="storeInput()"class="form-button" type="submit">Send Message </button> 
+                    <button onclick="storeInput()"class="form-button" type="submit">Send To All </button>
+                    <br>
+                    
+                </form>
+                <!-- <ul style="margin-top: 25px;">
+                    <li></li>
+                </ul> -->
+            </div>
+            
+            <div class="section-container">
+                <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Payment Reminder</h3>
+                <form id="messageForm">
+                    <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
+                    <input class="input"type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3" required>
+                    
+                    <button onclick="sendReminder()"class="reminder-button"type="submit">Send Reminder</button>
+                    
+                </form>
+                <!-- <ul style="margin-top: 25px;">
+                    <li></li>
+                </ul> -->
+            </div>
+            
+            <div class="section-container">
+                <button type="View" class="form-button" style="margin-bottom: 0; margin-top: 0;">View Members</button>
+                <ul id="memberList" style="margin-top: 25px;">
+                </ul>
+            </div>
+            
+            <div class="section-container">
+                <h3>Add/Remove Member</h3>
+                <form class="form-container">
+                    <input class="input"type="text" id="username" name="username" placeholder="username" required><br>
+                    
+                    <div id="add-practices">
+                        <label class="form-label" for="cal-prac-picker">Practice Date:</label>
+                        <div class="">
+                            <input type="date" id="cal-prac-picker" name="trip-start" value="" min="2024-04-11" max="2026-01-01"/>
+                            <button class="" type="button" onclick="addPractice()">Add</button> 
+                            <p style="margin-bottom: 0%; font-size: 12px;">Practices to book:</p>
+                            <ul style="margin-top: 0;" id="practices-to-add"></ul>
+                        </div>
+                        <button onclick="addMember()"class="form-button" type="submit">Add Member</button>
+                        <button onclick="removeMember()"class="form-button" type="submit">Remove Member</button>
+                    </div>  
+                </form>
+            </div>
+            
+        </div>
+        
+        <div id="CalendarSection" style="margin-top:35%; display: true;">
+            
+            <h1>Schedule</h1>
+            
+            <button onclick="previousMonth()">  Previous Month</button>
+            <button onclick="nextMonth()">Next Month</button>
             <br>
-
-        </form>
-          <!-- <ul style="margin-top: 25px;">
-              <li></li>
-          </ul> -->
-      </div>
-
-      <div class="section-container">
-          <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Payment Reminder</h3>
-          <form id="messageForm">
-            <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
-            <input class="input"type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3" required>
-
-            <button onclick="sendReminder()"class="reminder-button"type="submit">Send Reminder</button>
-
-        </form>
-          <!-- <ul style="margin-top: 25px;">
-              <li></li>
-          </ul> -->
-      </div>
-
-      <div class="section-container">
-          <button type="View" class="form-button" style="margin-bottom: 0; margin-top: 0;">View Members</button>
-          <ul style="margin-top: 25px;">
-              <li></li>
-          </ul>
-      </div>
-
-      <div class="section-container">
-        <h3>Add/Remove Member</h3>
-        <form class="form-container">
-            <input class="input"type="text" id="username" name="username" placeholder="username" required><br>
-
-                <div id="add-practices">
-                    <label class="form-label" for="cal-prac-picker">Practice Date:</label>
-                    <div class="">
-                        <input type="date" id="cal-prac-picker" name="trip-start" value="" min="2024-04-11" max="2026-01-01"/>
-                        <button class="" type="button" onclick="addPractice()">Add</button> 
-                        <p style="margin-bottom: 0%; font-size: 12px;">Practices to book:</p>
-                        <ul style="margin-top: 0;" id="practices-to-add"></ul>
-                    </div>
-                    <button onclick="addMember()"class="form-button" type="submit">Add Member</button>
-                    <button onclick="removeMember()"class="form-button" type="submit">Remove Member</button>
-                </div>  
-        </form>
-      </div>
-
-  </div>
-
-  <div id="CalendarSection" style="margin-top:35%; display: true;">
-
-    <h1>Schedule</h1>
-
-    <button onclick="previousMonth()">  Previous Month</button>
-    <button onclick="nextMonth()">Next Month</button>
-    <br>
-    <div id="calendar"></div>
-</div>
-
-
-</body>
-</html>
+            <div id="calendar"></div>
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+        <script src='coach.js'></script>
+        
+    </body>
+    </html>
+    

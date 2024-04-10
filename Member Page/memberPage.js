@@ -50,26 +50,26 @@ function removePractice() {
 }
 
 
-// function addAllPractices(event) {
-//     event.preventDefault();
+function addAllPractices(event) {
+    event.preventDefault();
 
 
-//     // var listofPracticeDates = document.getElementById("practices-to-add");
+    // var listofPracticeDates = document.getElementById("practices-to-add");
 
-//     // var datesToAdd = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
-//     //     console.log(li.textContent)
-//     // });
+    // var datesToAdd = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
+    //     console.log(li.textContent)
+    // });
 
-//     // console.log(listofPracticeDates);
-//     var date = document.getElementById('practices-to-add').value;
-//     console.log(date);
-//     pracUpdater(date);
+    // console.log(listofPracticeDates);
+    var date = document.getElementById('practices-to-add').value;
+    console.log(date);
+    pracUpdater(date);
 
 
 
-//     document.getElementById("cal-prac-picker").value = null;
-//     return;
-// }
+    document.getElementById("cal-prac-picker").value = null;
+    return;
+}
 
 
 
@@ -123,6 +123,7 @@ window.onload = function() {
                     // Fetch and display practices
                     console.log(name);
                     globName = name;
+                    console.log(globName);
                     dbRef.child('Member/' + name + '/Practices').once('value', (practicesSnapshot) => {
                         const practices = practicesSnapshot.val();
                         const practicesUl = document.getElementById('upcoming-practices');
@@ -156,63 +157,29 @@ window.onload = function() {
 
 
 
-// document.getElementById('book-practice').addEventListener('addPrac', function(event) {
-//     event.preventDefault(); 
+document.getElementById('book-practice').addEventListener('addPrac', function(event) {
+    event.preventDefault(); 
     
-//     var date = document.getElementById('practices-to-add').value;
-//     console.log(date);
-//     pracUpdater(date);
-//   });
+    var date = document.getElementById('practices-to-add').value;
+    console.log(date);
+    pracUpdater(date);
+  });
 
 
 
-//   function pracUpdater(date) {
-//     var starCountRef2 = db.ref('Member/'+globName+'/Practices');
-//     starCountRef2.on('value', (snapshot) => {
-//     curr = snapshot.val();
-//     console.log(curr);
+  function pracUpdater(date) {
+    var starCountRef2 = db.ref('Member/'+globName+'/Practices');
+    starCountRef2.on('value', (snapshot) => {
+    curr = snapshot.val();
+    console.log(curr);
 
-//     db.ref('Member/'+globName).set({
+    db.ref('Member/'+globName).set({
         
-//         Practices: curr + date
-//         })
+        Practices: curr + date
+        })
 
-//     })
+    })
 
-// //   location.reload();
+//   location.reload();
 
-//   }
-
-function addAllPractices(event) {
-    event.preventDefault();
-
-    var datesToAdd = [];
-    var listItems = document.querySelectorAll('#practices-to-add li');
-    listItems.forEach(function (li) {
-        datesToAdd.push(li.textContent.trim());
-    });
-
-    datesToAdd.forEach(function (date) {
-        pracUpdater(date);
-    });
-
-    document.getElementById("cal-prac-picker").value = null;
-    return;
-}
-
-function pracUpdater(date) {
-    var starCountRef2 = db.ref('Member/' + globName + '/Practices');
-    starCountRef2.once('value', function (snapshot) {
-        var curr = snapshot.val() || ""; // Initialize to empty string if null
-        var updatedPractices = curr + " " + date; // Concatenate new date with existing practices
-
-        db.ref('Member/' + globName).update({
-            Practices: updatedPractices
-        }).then(function () {
-            console.log("Practice updated successfully");
-            location.reload(); // Reload the page after successful update
-        }).catch(function (error) {
-            console.error("Error updating practice: ", error);
-        });
-    });
-}
+  }

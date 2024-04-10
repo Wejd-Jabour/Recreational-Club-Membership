@@ -37,8 +37,8 @@
             <label for="messageInput">Enter your message:</label> <br><br>
             <textarea id="messageInput" name="message" rows="2" cols="30" required></textarea> <br><br>
 
-            <button class="form-button" type="submit">Send Message </button> 
-            <button class="form-button" type="submit">Send To All </button>
+            <button onclick="storeInput()"class="form-button" type="submit">Send Message </button> 
+            <button onclick="storeInput()"class="form-button" type="submit">Send To All </button>
             <br>
 
         </form>
@@ -53,7 +53,7 @@
             <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
             <input class="input"type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3" required>
 
-            <button class="reminder-button"type="submit">Send Reminder</button>
+            <button onclick="sendReminder()"class="reminder-button"type="submit">Send Reminder</button>
 
         </form>
           <!-- <ul style="margin-top: 25px;">

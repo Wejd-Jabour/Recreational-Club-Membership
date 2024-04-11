@@ -47,15 +47,11 @@ window.onload = function() {
             
             let payments = document.createElement('td');
             payments.textContent = members[member.key].Payments_Total;
-            
-            let notes = document.createElement('td');
-            notes.textContent = members[member.key].Message;
 
             row.appendChild(name);
             row.appendChild(email);
             row.appendChild(attendance);
             row.appendChild(payments);
-            row.appendChild(notes);
             
             regTableBody.appendChild(row);
         });
@@ -98,15 +94,11 @@ window.onload = function() {
             
             let payments = document.createElement('td');
             payments.textContent = members[member.key].Payments_Total;
-            
-            let notes = document.createElement('td');
-            notes.textContent = members[member.key].Message;
 
             row.appendChild(name);
             row.appendChild(email);
             row.appendChild(attendance);
             row.appendChild(payments);
-            row.appendChild(notes);
 
             classTblBody.appendChild(row);
         });
@@ -150,14 +142,10 @@ window.onload = function() {
             let payments = document.createElement('td');
             payments.textContent = members[member.key].Payments_Total;
             
-            let notes = document.createElement('td');
-            notes.textContent = members[member.key].Message;
-
             row.appendChild(name);
             row.appendChild(email);
             row.appendChild(attendance);
             row.appendChild(payments);
-            row.appendChild(notes);
 
             paymentTblBody.appendChild(row);
         });

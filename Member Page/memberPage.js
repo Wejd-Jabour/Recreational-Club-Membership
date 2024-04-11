@@ -91,7 +91,8 @@ function paymentsUpdater(payment)
     var user;
     var curVal;
     // Corrected the path based on your initial description
-    var paymentsTotalRef = db.ref('Members/' + globName + '/Payments_Total');
+    var paymentsTotalRef = db.ref('Member/' + globName + '/Payments_Total');
+
 
     paymentsTotalRef.on('value', (snapshot) => {
     // Directly accessing the snapshot's value, since we're now directly referencing Payments_Total
@@ -111,9 +112,6 @@ function paymentsUpdater(payment)
     location.reload();
     return firebase.database().ref().update(updates);
 
-
-  
- 
 }
 function pracUpdater(date) {
     db = DBS[0];

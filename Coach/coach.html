@@ -26,18 +26,18 @@
         <div class="sections-container" style="text-align: center;">
             
             <div class="section-container">
-                <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Message to User(s)</h3>
+                <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Message to User</h3>
                 <form id="messageForm">
                     
-                    <label for="usernamesInput">Enter member names (comma-separated):</label> <br><br>
-                    <input class="input" type="text" id="usernamesInput" name="usernames" placeholder="e.g. member1, member2, member3">
+                    <label for="usernamesInput">Enter member name:</label> <br><br>
+                    <input class="input" type="text" id="usernamesInput" name="usernames" placeholder="name">
                     <br><br>
                     
                     <label for="messageInput">Enter your message:</label> <br><br>
                     <textarea id="messageInput" name="message" rows="2" cols="30" required></textarea> <br><br>
                     
                     <button onclick="storeInput()"class="form-button" type="submit">Send Message </button> 
-                    <button onclick="storeInput()"class="form-button" type="submit">Send To All </button>
+                   <!-- <button onclick="storeInput()"class="form-button" type="submit">Send To All </button>>-->
                     <br>
                     
                 </form>
@@ -49,8 +49,8 @@
             <div class="section-container">
                 <h3 style="font-family: Trebuchet MS, sans-serif; margin-top: 0; margin-bottom: 0;">Send Payment Reminder</h3>
                 <form id="messageForm">
-                    <label for="reminderInput">Enter member names (comma-separated):</label> <br><br>
-                    <input class="input"type="text" id="reminderInput" name="usernames" placeholder="e.g. member1, member2, member3" required>
+                    <label for="reminderInput">Enter member name:</label> <br><br>
+                    <input class="input"type="text" id="reminderInput" name="usernames" placeholder="name" required>
                     
                     <button onclick="sendReminder()"class="reminder-button"type="submit">Send Reminder</button>
                     

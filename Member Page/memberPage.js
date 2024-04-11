@@ -3,6 +3,8 @@ function togglePopup() {
     overlay.classList.toggle('show'); 
 } 
 
+var DATES = [];
+var DBS = [];
 
 function addPractice() {
     var practiceDate = document.getElementById("cal-prac-picker").value;
@@ -10,7 +12,8 @@ function addPractice() {
         alert("Please choose a date");
         return;
     }
-
+    DATES.push(practiceDate);
+    //console.log(practiceDate);
     var repeatedDate = false;
     var currPracDates = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
         console.log(li.textContent);
@@ -20,7 +23,7 @@ function addPractice() {
             return;
         }
     });
-
+    console.log(currPracDates);
     if (!repeatedDate) {
         var practiceList = document.getElementById("practices-to-add");
         var liElement = document.createElement('li');
@@ -39,6 +42,7 @@ function addPractice() {
         liElement.appendChild(liBtn);
         practiceList.appendChild(liElement);
     }
+    //console.log(DATES);
     document.getElementById("cal-prac-picker").value = null;
     return;
 }
@@ -50,20 +54,27 @@ function removePractice() {
 }
 
 
-function addAllPractices(event) {
-    event.preventDefault();
+function addAllPractices() {
+    //event.preventDefault();
 
 
-    // var listofPracticeDates = document.getElementById("practices-to-add");
-
+    var listofPracticeDates = document.getElementById("practices-to-add");
+    var practDates = listofPracticeDates.value;
+    console.log(DATES);
     // var datesToAdd = Array.from(document.querySelectorAll('#practices-to-add>li'), (li) => {
     //     console.log(li.textContent)
     // });
-
+    var str = "";
+    for (var i = 0; i < DATES.length; i++)
+    {
+        pracUpdater(DATES);
+    }
+    console.log(str);
+    pracUpdater(str);
     // console.log(listofPracticeDates);
-    var date = document.getElementById('practices-to-add').value;
-    console.log(date);
-    pracUpdater(date);
+    // var date = document.getElementById('practices-to-add').value;
+    // console.log(date);
+    // pracUpdater(date);
 
 
 
@@ -71,6 +82,23 @@ function addAllPractices(event) {
     return;
 }
 
+function pracUpdater(date) {
+    db = DBS[0];
+    console.log(globName);
+    var ref = db.ref("Member/" + globName + "/Practices");
+        // Create a new message entry with a unique key
+        var newMessageRef = ref.push();
+       // console.log(username);
+        // Set the message content
+        console.log(date);
+
+        newMessageRef.set({
+            practice: date,
+        });
+
+   location.reload();
+
+  }
 
 
 var globName;
@@ -94,6 +122,7 @@ window.onload = function() {
     firebase.initializeApp(firebaseConfig);
     
     const db = firebase.database();
+    DBS.push(db);
     var user;
 
     var starCountRef = db.ref('Current/Username');
@@ -124,15 +153,15 @@ window.onload = function() {
                     console.log(name);
                     globName = name;
                     console.log(globName);
-                    dbRef.child('Member/' + name + '/Practices').once('value', (practicesSnapshot) => {
-                        const practices = practicesSnapshot.val();
-                        const practicesUl = document.getElementById('upcoming-practices');
-                        practicesUl.innerHTML = ''; // Clear existing entries
-                        
-                        let li = document.createElement('li');
-                        li.textContent = practices; // Assuming the date is the key
-                        practicesUl.appendChild(li);
-                        
+                    dbRef.child('Member/' + name + '/Practices').once('value', (practiceSnapshot) => {
+                        const practices = practiceSnapshot.val();
+                        const ul = document.getElementById("prac12")
+                        for (let prac in practices) {
+                            const date = practices[prac].practice;
+                            const li = document.createElement('li');
+                            li.textContent = date; // Set username as list item content
+                            ul.appendChild(li); // Append the new <li> to the <ul>
+                        }
                     });
 // Fetch and display messages
                     dbRef.child('Member/' + name + '/Message').once('value', (messagesSnapshot) => {
@@ -164,22 +193,3 @@ document.getElementById('book-practice').addEventListener('addPrac', function(ev
     console.log(date);
     pracUpdater(date);
   });
-
-
-
-  function pracUpdater(date) {
-    var starCountRef2 = db.ref('Member/'+globName+'/Practices');
-    starCountRef2.on('value', (snapshot) => {
-    curr = snapshot.val();
-    console.log(curr);
-
-    db.ref('Member/'+globName).set({
-        
-        Practices: curr + date
-        })
-
-    })
-
-//   location.reload();
-
-  }

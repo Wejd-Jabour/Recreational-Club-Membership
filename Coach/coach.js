@@ -26,20 +26,23 @@ let currentMonth;
 
 
 function addMessage(username, message) {
-    
-    
-    // Reference to the user's messages node
-    var ref = db.ref("Member/" + username + "/Message");
 
-    // Create a new message entry with a unique key
-    var newMessageRef = ref.push();
+        var ref = db.ref("Member/" + username + "/Message");
+        // Create a new message entry with a unique key
+        var newMessageRef = ref.push();
+       // console.log(username);
+        // Set the message content
+        console.log(username);
 
-    // Set the message content
-    newMessageRef.set({
-        text: message,
-    });
-    console.log("IN addMessage");
-    console.log(message);
+        newMessageRef.set({
+            text: message,
+        }).then((message) => {
+            console.log("IN addMessage");
+            console.log(message);
+            resolve("added message"); // Resolve after .set() completes
+        }).catch((error) => {
+            reject("failed to add message: " + error.message); // Reject in case of an error
+        });
 }
 
 // function addMessage(name,message) {
@@ -241,6 +244,31 @@ function revealCalendar() {
     document.getElementById("CalendarSection").style.display = "block";
 }
 
+async function sendMessages(usernames, message)
+{
+    console.log(usernames);
+    for (var i = 0; i < usernames.length; i++) {
+        var username = usernames[i];
+        var ref = db.ref("Member/" + username + "/Message");
+
+        // Create a new message entry with a unique key
+        var newMessageRef = ref.push();
+       // console.log(username);
+        // Set the message content
+        console.log(username);
+
+        newMessageRef.set({
+            text: message,
+        }).then((message) => {
+            console.log("IN addMessage");
+            console.log(message);
+            resolve("added message"); // Resolve after .set() completes
+        }).catch((error) => {
+            reject("failed to add message: " + error.message); // Reject in case of an error
+        });
+        console.log(username);
+        }
+}
 
 function storeInput() { // usernames are actually names!
 
@@ -254,22 +282,14 @@ function storeInput() { // usernames are actually names!
     // For example, you can store it in a variable
     //var storedValue = usernameInput;
 
-    if (usernameInput.indexOf(",") !== -1){
+
     var usernamesArray = usernameInput.split(',');
 
 // Trim whitespace from each username and create a new array
     var cleanedUsernames = usernamesArray.map(function(username) {
     return username.trim();
     });
-    console.log(cleanedUsernames);
-    for (var i = 0; i < cleanedUsernames.length; i++) {
-        var username = cleanedUsernames[i];
-        addMessage(username, messageInput);
-        
-        }
-    } else {
-    addMessage(usernameInput,messageInput);
-    }
+    sendMessages(cleanedUsernames, messageInput);
 }
 
 function sendReminder(){
@@ -282,26 +302,13 @@ function sendReminder(){
     // For example, you can store it in a variable
     //var storedValue = usernameInput;
 
-    if (usernameInput.indexOf(",") !== -1){
-        var usernamesArray = usernameInput.split(',');
-        console.log("sendRemidner if statment");
-        console.log(usernameInput);
+    var usernamesArray = usernameInput.split(',');
 
-// Trim whitespace from each username and create a new array
-        var cleanedUsernames = usernamesArray.map(function(username) {
-        return username.trim(); 
-        });
-        console.log(cleanedUsernames);
-        for (var i = 0; i < cleanedUsernames.length; i++) {
-            var username = cleanedUsernames[i];
-            
-            addMessage(username, messageInput);
-            }
-    } else {
-        addMessage(usernameInput,messageInput);
-        console.log("sendRemidner else  statment");
-        console.log(usernameInput);
-    }
+    // Trim whitespace from each username and create a new array
+    var cleanedUsernames = usernamesArray.map(function(username) {
+    return username.trim();
+    });
+    return sendMessages(cleanedUsernames, messageInput);
 }
 
 function addPractice() {

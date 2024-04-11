@@ -70,7 +70,7 @@ function addAllPractices() {
         pracUpdater(DATES);
     }
     console.log(str);
-    pracUpdater(str);
+    
     // console.log(listofPracticeDates);
     // var date = document.getElementById('practices-to-add').value;
     // console.log(date);

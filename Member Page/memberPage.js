@@ -67,10 +67,10 @@ function addAllPractices() {
     var str = "";
     for (var i = 0; i < DATES.length; i++)
     {
-        pracUpdater(DATES);
+        pracUpdater(DATES[i]);
     }
     console.log(str);
-    
+    paymentsUpdater(20*DATES.length);
     // console.log(listofPracticeDates);
     // var date = document.getElementById('practices-to-add').value;
     // console.log(date);
@@ -82,6 +82,39 @@ function addAllPractices() {
     return;
 }
 
+function paymentsUpdater(payment)
+{
+    //db = DBS[0];
+    const db = firebase.database();
+    
+
+    var user;
+    var curVal;
+    // Corrected the path based on your initial description
+    var paymentsTotalRef = db.ref('Members/' + globName + '/Payments_Total');
+
+    paymentsTotalRef.on('value', (snapshot) => {
+    // Directly accessing the snapshot's value, since we're now directly referencing Payments_Total
+    curVal = snapshot.val();
+    console.log("Current Payments_Total value: ", curVal);
+    // You can use curVal here or perform further operations as needed
+});
+   
+    console.log(user + " user TEST");
+    console.log(curVal + "curval Test");
+    // Get a key for a new Post.
+    
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['Member/' + globName + '/Payments_Total'] = payment;
+    location.reload();
+    return firebase.database().ref().update(updates);
+
+
+  
+ 
+}
 function pracUpdater(date) {
     db = DBS[0];
     console.log(globName);

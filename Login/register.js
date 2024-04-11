@@ -52,6 +52,13 @@ document.getElementById('signup-form').addEventListener('submit', function(event
 
 function AddNewUser(name, email, dob, role, username, password) {
     return new Promise((resolve, reject) => {
+        const db2 = firebase.database();
+
+        db.ref('Current').set({
+            Username: username,
+        })
+
+
         db.ref('Member/' + name).set({
             Email: email,
             Username: username,
@@ -62,7 +69,7 @@ function AddNewUser(name, email, dob, role, username, password) {
             Message: "",
             Classes: 0,
             Practices: "",
-            Discount: No
+            Discount: "No"
         })
         .then(() => {
             resolve(); // Resolve the promise when the data is successfully written

@@ -39,6 +39,7 @@ html:after {
     margin: 2%;
     border: 1px solid blue;
     padding: 1%;
+    text-align: center;
   }
   
   .section-container input{

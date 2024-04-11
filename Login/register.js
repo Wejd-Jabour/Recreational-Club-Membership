@@ -61,7 +61,8 @@ function AddNewUser(name, email, dob, role, username, password) {
             Payments_Total: 0.00,
             Message: "",
             Classes: 0,
-            Practices: ""
+            Practices: "",
+            Discount: No
         })
         .then(() => {
             resolve(); // Resolve the promise when the data is successfully written

@@ -369,9 +369,11 @@ dbRef.child('Member').once('value', (snapshot) => {
         
         const practicesUl = document.getElementById('memberList');
         
-        let li = document.createElement('li');
-        li.textContent = memberKey; // Assuming the date is the key
-        practicesUl.appendChild(li);
+        if(members[memberKey].Role == "Member"){
+            let li = document.createElement('li');
+            li.textContent = memberKey; // Assuming the date is the key
+            practicesUl.appendChild(li);
+        }
         
     };
 

@@ -27,6 +27,7 @@ let currentMonth;
 
 function addMessage(username, message) {
     
+    
     // Reference to the user's messages node
     var ref = db.ref("Member/" + username + "/Message");
 
@@ -38,7 +39,7 @@ function addMessage(username, message) {
         text: message,
     });
     console.log("IN addMessage");
-    console.log(username);
+    console.log(message);
 }
 
 // function addMessage(name,message) {
@@ -201,6 +202,7 @@ function storeInput() { // usernames are actually names!
     // For example, you can store it in a variable
     //var storedValue = usernameInput;
 
+    if (usernameInput.indexOf(",") !== -1){
     var usernamesArray = usernameInput.split(',');
 
 // Trim whitespace from each username and create a new array
@@ -212,15 +214,42 @@ function storeInput() { // usernames are actually names!
         var username = cleanedUsernames[i];
         addMessage(username, messageInput);
         
+        }
+    } else {
+    addMessage(usernameInput,messageInput);
     }
-    //addMessage(usernameInput,messageInput);
 }
 
 function sendReminder(){
-    var usernameElement = document.getElementById('usernamesInput')
+    // Step 1: Get a reference to the input element
+    var usernameElement = document.getElementById('reminderInput');
+    var messageInput = "REMINDER TO PAY FOR YOUR SESSION!";
+    // Step 2: Retrieve the value entered by the user
     var usernameInput = usernameElement.value;
+    // Step 3: Store the value as needed
+    // For example, you can store it in a variable
+    //var storedValue = usernameInput;
 
-    //sendreminder(usernameInput)
+    if (usernameInput.indexOf(",") !== -1){
+        var usernamesArray = usernameInput.split(',');
+        console.log("sendRemidner if statment");
+        console.log(usernameInput);
+
+// Trim whitespace from each username and create a new array
+        var cleanedUsernames = usernamesArray.map(function(username) {
+        return username.trim(); 
+        });
+        console.log(cleanedUsernames);
+        for (var i = 0; i < cleanedUsernames.length; i++) {
+            var username = cleanedUsernames[i];
+            
+            addMessage(username, messageInput);
+            }
+    } else {
+        addMessage(usernameInput,messageInput);
+        console.log("sendRemidner else  statment");
+        console.log(usernameInput);
+    }
 }
 
 function addPractice() {

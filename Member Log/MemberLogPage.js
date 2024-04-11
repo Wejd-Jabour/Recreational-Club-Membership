@@ -29,7 +29,7 @@ window.onload = function() {
 
 
         const regularTable = document.createElement("table");
-        regularTable.style.transform = "translate(20%, -240%)";
+        regularTable.style.transform = "translate(20%, -247%)";
         regularTable.style.position = "static"
         const regTableBody = document.createElement("tBody");
 
@@ -75,7 +75,7 @@ window.onload = function() {
         membersArrayA.sort((a, b) => b.classesAttended - a.classesAttended);
 
         const classTable = document.createElement("table");
-        classTable.style.transform = "translate(20%, 50%)";
+        classTable.style.transform = "translate(20%, 0%)";
         classTable.style.position= "static";
         const classTblBody = document.createElement("tBody");
         
@@ -122,7 +122,7 @@ window.onload = function() {
         membersArrayB.sort((a, b) => b.totalPayments - a.totalPayments);
 
         const paymentTable = document.createElement("table");
-        paymentTable.style.transform = "translate(20%, 350%)";
+        paymentTable.style.transform = "translate(20%, 245%)";
         paymentTable.style.position= "static";
         const paymentTblBody = document.createElement("tBody");
         

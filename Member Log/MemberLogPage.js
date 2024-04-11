@@ -21,6 +21,8 @@ window.onload = function() {
     dbRef.child('Member').once('value', (snapshot) => {
         const members = snapshot.val();
 
+
+        //create array of all members
         const memberArray = Object.keys(members).map(memberKey =>({
             key: memberKey
         }));
@@ -41,7 +43,7 @@ window.onload = function() {
             email.textContent = members[member.key].Email;
             
             let attendance = document.createElement('td');
-            attendance.textContent = member.classesAttended;
+            attendance.textContent = members[member.key].Classes;
             
             let payments = document.createElement('td');
             payments.textContent = members[member.key].Payments_Total;
@@ -143,7 +145,7 @@ window.onload = function() {
             email.textContent = members[member.key].Email;
             
             let attendance = document.createElement('td');
-            attendance.textContent = member.classesAttended;
+            attendance.textContent = members[member.key].Classes;
             
             let payments = document.createElement('td');
             payments.textContent = members[member.key].Payments_Total;

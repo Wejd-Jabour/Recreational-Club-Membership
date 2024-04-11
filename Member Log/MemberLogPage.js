@@ -130,7 +130,7 @@ window.onload = function() {
         membersArrayB.sort((a, b) => b.totalPayments - a.totalPayments);
 
         const paymentTable = document.createElement("table");
-        paymentTable.style.transform = "translate(20%, 320%)";
+        paymentTable.style.transform = "translate(20%, 350%)";
         paymentTable.style.position= "static";
         const paymentTblBody = document.createElement("tBody");
         

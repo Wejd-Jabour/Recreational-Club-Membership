@@ -137,13 +137,13 @@ window.onload = function() {
 // Fetch and display messages
                     dbRef.child('Member/' + name + '/Message').once('value', (messagesSnapshot) => {
                         const messages = messagesSnapshot.val();
-                        const messagesDiv = document.getElementById('messages');
-                        messagesDiv.innerHTML = ''; // Clear existing entries
-                        
-                        let p = document.createElement('p');
-                        p.textContent = messages; // Assuming the message itself is the value
-                        messagesDiv.appendChild(p);
-                        
+                        const ul = document.getElementById("messages")
+                        for (let message in messages) {
+                            const messageText = messages[message].text;
+                            const li = document.createElement('li');
+                            li.textContent = messageText; // Set username as list item content
+                            ul.appendChild(li); // Append the new <li> to the <ul>
+                        }
                     });
 
                     break; // Exit the loop once the matching user is processed

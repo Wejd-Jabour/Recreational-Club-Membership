@@ -129,12 +129,15 @@ function generateCalendar(year, month) {
         const newRow = document.createElement('tr');
         for (let i = 0; i < 7; i++) {
             const cell = document.createElement('td');
+            
+            const dayStr = ("0" + currentDate.getDate()).slice(-2); // Ensures two-digit format
             const cellList = document.createElement('ul');
-            cellList.id = 'attending'; // Create an <ul> for list items
+            cellList.id = `attending-${dayStr}`; // Unique ID for each <ul> based on the day
+
             if (currentDateIndex >= firstDay.getDay() && currentDate.getMonth() === month) {
                 cell.textContent = currentDate.getDate();
-                const dateItem = document.createElement('li'); // Create an <li> element for the date
-                cellList.appendChild(dateItem); // Append date item to the list
+                // const dateItem = document.createElement('li');
+                // cellList.appendChild(dateItem); // Append date item to the list
                 currentDate.setDate(currentDate.getDate() + 1);
             }
             cell.appendChild(cellList); // Append the list to the cell
@@ -147,6 +150,55 @@ function generateCalendar(year, month) {
     table.appendChild(tbody);
     calendarDiv.appendChild(table);
 }
+
+
+// function addMembertoCal(event) {
+//     event.preventDefault(); // Prevent the default form submission behavior
+
+//     // Get the username and date input values
+//     const usernameInput = document.getElementById('username').value;
+//     const dateInput = document.getElementById('dateInput').value;
+//     const selectedDate = new Date(dateInput);
+//     const day = selectedDate.getDate();
+
+//     // Get the <ul> element with the appropriate ID
+//     const ul = document.getElementById(`attending-${day}`);
+    
+//     if (ul) { // Check if the <ul> element exists
+//         // Create a new <li> element
+//         const li = document.createElement('li');
+//         li.textContent = usernameInput;
+        
+//         // Append the <li> element to the <ul> element
+//         ul.appendChild(li);
+//     } else {
+//         console.error(`UL element with ID "attending-${day}" not found.`);
+//     }
+// }
+
+
+function addMembertoCal(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const username = document.getElementById('username').value; // Username
+    const dateInput = document.getElementById('cal-prac-picker').value; // Date input value
+
+    if (dateInput) {
+        const date = new Date(dateInput);
+        const dayStr = ("0" + date.getDate()+1).slice(-2); // Ensures two-digit format
+        const ulId = `attending-${dayStr}`;
+        const ul = document.getElementById(ulId);
+
+        if (ul) {
+            const li = document.createElement('li');
+            li.textContent = username; // Set username as list item content
+            ul.appendChild(li); // Append the new <li> to the <ul>
+        } 
+    } else {
+        alert("Please select a date.");
+    }
+}
+
 
 
 function onPageLoad() {

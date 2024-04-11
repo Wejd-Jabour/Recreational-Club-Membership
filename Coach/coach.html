@@ -68,7 +68,7 @@
             
             <div class="section-container">
                 <h3>Add/Remove Member</h3>
-                <form class="form-container">
+                <form id="calUpdate" class="form-container">
                     <input class="input"type="text" id="username" name="username" placeholder="username" required><br>
                     
                     <div id="add-practices">
@@ -79,7 +79,7 @@
                             <p style="margin-bottom: 0%; font-size: 12px;">Practices to book:</p>
                             <ul style="margin-top: 0;" id="practices-to-add"></ul>
                         </div>
-                        <button onclick="addMember()"class="form-button" type="submit">Add Member</button>
+                        <button id="AddUser" class="form-button" type="submit" onclick="addMembertoCal(event)">Add Member</button>
                         <button onclick="removeMember()"class="form-button" type="submit">Remove Member</button>
                     </div>  
                 </form>

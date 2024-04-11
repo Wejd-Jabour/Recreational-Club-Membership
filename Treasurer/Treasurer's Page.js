@@ -216,3 +216,9 @@ function revealCalendar() {
     document.getElementById("Expense Section").style.display = "none";
     document.getElementById("CalendarSection").style.display = "block";
 }
+
+//move to member log page when button is clicked
+function openLogs() 
+{
+    window.open("../Member Log/MemberLogPage.html", "_blank");
+}

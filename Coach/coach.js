@@ -187,8 +187,12 @@ function addMembertoCal(event) {
     const dateInput = document.getElementById('cal-prac-picker').value; // Date input value
 
     if (dateInput) {
-        const date = new Date(dateInput);
-        const dayStr = ("0" + date.getDate()+1).slice(-2); // Ensures two-digit format
+        let date = new Date(dateInput);
+
+        // Adjust for timezone offset to ensure we're working with the correct date
+        const timeZoneOffset = date.getTimezoneOffset() * 60000; // Offset in milliseconds
+        date = new Date(date.getTime() + timeZoneOffset);
+        const dayStr = ("0" + date.getDate()).slice(-2); // Ensures two-digit format, correctly forming the day string
         const ulId = `attending-${dayStr}`;
         const ul = document.getElementById(ulId);
 
@@ -196,11 +200,14 @@ function addMembertoCal(event) {
             const li = document.createElement('li');
             li.textContent = username; // Set username as list item content
             ul.appendChild(li); // Append the new <li> to the <ul>
-        } 
+        } else {
+            console.error(`UL with id ${ulId} not found.`);
+        }
     } else {
         alert("Please select a date.");
     }
 }
+
 
 
 
@@ -369,10 +376,18 @@ dbRef.child('Member').once('value', (snapshot) => {
         
         const practicesUl = document.getElementById('memberList');
         
-        let li = document.createElement('li');
-        li.textContent = memberKey; // Assuming the date is the key
-        practicesUl.appendChild(li);
+        if(members[memberKey].Role == "Member"){
+            let li = document.createElement('li');
+            li.textContent = memberKey; // Assuming the date is the key
+            practicesUl.appendChild(li);
+        }
         
     };
 
 }).catch(error => console.error("Error fetching member data: ", error));
+
+//move to member log page when button is clicked
+function openLogs() 
+{
+    window.open("../Member Log/MemberLogPage.html", "_blank");
+}

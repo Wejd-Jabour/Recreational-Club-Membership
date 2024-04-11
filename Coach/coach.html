@@ -61,7 +61,7 @@
             </div>
             
             <div class="section-container">
-                <button type="View" class="form-button" style="margin-bottom: 0; margin-top: 0;">View Members</button>
+                <button onclick="openLogs()" type="View" class="form-button" style="margin-bottom: 0; margin-top: 0;">View Full Member Log</button>
                 <ul id="memberList" style="margin-top: 25px;">
                 </ul>
             </div>
@@ -75,7 +75,6 @@
                         <label class="form-label" for="cal-prac-picker">Practice Date:</label>
                         <div class="">
                             <input type="date" id="cal-prac-picker" name="trip-start" value="" min="2024-04-11" max="2026-01-01"/>
-                            <button class="" type="button" onclick="addPractice()">Add</button> 
                             <p style="margin-bottom: 0%; font-size: 12px;">Practices to book:</p>
                             <ul style="margin-top: 0;" id="practices-to-add"></ul>
                         </div>

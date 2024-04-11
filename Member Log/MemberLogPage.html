@@ -1,86 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Member Log Page</title>
-    <style>
-        *{
-            box-sizing: border-box;
-        }
-		body{
-			font-family:'Trebuchet MS', sans-serif;
-            width: 100%;
-            height: 50vh;
+    <link rel="stylesheet" href="MemberLogPage.css">
 
-		}
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid #000000;
-            text-align: left;
-            padding: 8px;
-        }
-        th {
-            background-color: darkblue;
-        }
-        td {
-            background-color: rgb(220, 210, 210);
-        }
-        .text {
-            color: antiquewhite;
-        }
-        .bg-text {
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-            color: white;
-            font-weight: bold;
-            font-size: 30px;
-            border: 3px solid blue;
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /* z-index: 1; */
-            width: 80%;
-            padding: 20px;
-            text-align: center;
-
-        }
-        .log {
-            background-color: #B2CBF2; /* White background */
-            border: 2px solid #000; /* Black border */
-            padding: 20px; /* Add padding to the sections */
-            margin-top: 20px; /* Add margin to separate sections */
-            width: 80%; /* Set width to 80% */
-            margin-left: auto; /* Center the sections */
-            margin-right: auto; /* Center the sections */
-            border-radius: 6%;
-            position: relative;
-            transform: translate(0%, 200%);
-        }
-        .content-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .bg-img-members {
-            z-index: -10;
-            background-image: url("gym.png");
-            filter: blur(5px); -webkit-filter: blur(5px);
-            height: 100%;
-            width: 100%;
-
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-    </style>
 </head>
 
 
@@ -90,86 +15,39 @@
         <h1>Member Logs</h1>
         <br>
         <p>Keep up to date on our members here!</p>
+        <p>Name | Email | Classes Attended | Total Payments </p>
     </div>
-    
     
     <div>
         <h2 class="bg-text" style="width: 20%; position: relative; transform: translate(-50%, 50%);">
             Regular Log
         </h2>
-        
-        <table class="log" style="transform: translate(0%, 50%);">
-            <tr>
-                <th class="text">Member Name</th>
-                <th class="text">Email Address</th>
-                <th class="text">Classes Attended</th>
-                <th class="text">Amount Of Payments</th>
-                <th class="text">Amount of Missed Payments</th>
-                <th class="text">Notes</th>
-            </tr>
-           
-            <tr>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-        </table>
+        <!--log shows up here thru javascript-->
+
+       
     </div>
 
-    <div style="transform: translate(0%, 30%);">
-        <h2 class="bg-text" style="width: 30%; position: relative; transform: translate(-50%, 50%);">
+    <div style="transform: translate(0%, 525%);">
+        <h2 class="bg-text" style="width: 25%; position: relative; transform: translate(-50%, 50%);">
             Attended Most Classes
         </h2>
-        
-        <table class="log" style="transform: translate(0%, 50%);">
-            <tr>
-                <th class="text">Member Name</th>
-                <th class="text">Email Address</th>
-                <th class="text">Classes Attended</th>
-                <th class="text">Amount Of Payments</th>
-                <th class="text">Amount of Missed Payments</th>
-                <th class="text">Notes</th>
-            </tr>
-           
-            <tr>
-                <td>thing</td>
-                <td>thing</td>
-                <td>thing</td>
-                <td>thing</td>
-                <td>thing</td>
-                <td>thing</td>
-            </tr>
-        </table>
+        <!--log shows up here thru javascript-->
+
+       
     </div>
 
-    <div style="transform: translate(0%, 50%);">
-        <h2 class="bg-text" style="width: 30%; position: relative; transform: translate(-50%, 50%);">
-            Payed Most Often
+    <div style="transform: translate(0%, 1025%);">
+        <h2 class="bg-text" style="width: 20%; position: relative; transform: translate(-50%, 50%);">
+            Paid Most Often
         </h2>
+        <!--log shows up here thru javascript-->
         
-        <table class="log" style="transform: translate(0%, 50%);">
-            <tr>
-                <th class="text">Member Name</th>
-                <th class="text">Email Address</th>
-                <th class="text">Classes Attended</th>
-                <th class="text">Amount Of Payments</th>
-                <th class="text">Amount of Missed Payments</th>
-                <th class="text">Notes</th>
-            </tr>
-           
-            <tr>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-        </table>
     </div>
 
+    
 </body>
 </html>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+<script src="MemberLogPage.js"></script>

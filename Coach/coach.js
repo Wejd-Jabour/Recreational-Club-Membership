@@ -369,3 +369,9 @@ dbRef.child('Member').once('value', (snapshot) => {
     };
 
 }).catch(error => console.error("Error fetching member data: ", error));
+
+//move to member log page when button is clicked
+function openLogs() 
+{
+    window.open("../Member Log/MemberLogPage.html", "_blank");
+}

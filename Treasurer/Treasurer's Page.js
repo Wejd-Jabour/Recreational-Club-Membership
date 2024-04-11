@@ -1,7 +1,50 @@
-//Circle Bar and Earning Backend
+const firebaseConfig = {
+    measurementId: "G-NB2W85MSVY",
+    apiKey: "AIzaSyAip6F4bVauBOy-O-w2Fr-nDAng_Z7ZMHQ",
+    authDomain: "iteration3-e3d7f.firebaseapp.com",
+    databaseURL: "https://iteration3-e3d7f-default-rtdb.firebaseio.com/",
+    projectId: "iteration3-e3d7f",
+    storageBucket: "iteration3-e3d7f.appspot.com",
+    messagingSenderId: "669362709701",
+    appId: "1:669362709701:web:daea737d76afc30d967cac",
+    measurementId: "G-YYTV94XHX6"
+};
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 let TotalEarnings = 0; // Variable to store total income
+
+window.onload = function() {
+    
+
+    const dbRef = firebase.database().ref();
+    
+    dbRef.child('Member').once('value', (snapshot) => {
+        const members = snapshot.val();
+        console.log(members);
+
+
+        for (let memberKey in members) {
+           
+            let payment = members[memberKey].Payments_Total;
+            console.log(payment + "+" + TotalEarnings);
+            
+            TotalEarnings += payment;
+            
+            console.log(TotalEarnings);
+
+            
+        }
+        // document.getElementById("progress-text").textContent = "$" + TotalEarnings.toFixed(2);
+    
+        // updateProgress(TotalEarnings);
+
+        updatevalIncomeonLoad(TotalEarnings);
+    })
+    }
+    
+
 
 function updateProgress(value) {
 const circle = document.getElementById('progress-circle');
@@ -21,6 +64,24 @@ if (TotalEarnings > 10000) {
     updateProgress(100); // Set progress to 100%
 } else {
     let percentage = (TotalEarnings / 10000) * 100; // Calculate percentage for progress bar
+    updateProgress(percentage); // Update progress bar
+}
+document.getElementById("Income Value").value = ""; // Clear input field
+document.getElementById("Income Reason").value = ""; // Clear reason field
+}
+
+
+function updatevalIncomeonLoad(currPay) {
+let value = currPay;
+if (isNaN(value)) return; // Check if input is valid number
+ // Add new income to total
+document.getElementById("progress-text").textContent = "$" + value.toFixed(2); // Display total income
+
+let percentage = (value / 10000) * 100; // Calculate percentage for progress bar
+if (value > 10000) {
+    updateProgress(100); // Set progress to 100%
+} else {
+    let percentage = (value / 10000) * 100; // Calculate percentage for progress bar
     updateProgress(percentage); // Update progress bar
 }
 document.getElementById("Income Value").value = ""; // Clear input field
@@ -101,30 +162,6 @@ function generateCalendar(year, month) {
     calendarDiv.appendChild(table);
 }
 
-
-// function addMembertoCal(event) {
-//     event.preventDefault(); // Prevent the default form submission behavior
-
-//     // Get the username and date input values
-//     const usernameInput = document.getElementById('username').value;
-//     const dateInput = document.getElementById('dateInput').value;
-//     const selectedDate = new Date(dateInput);
-//     const day = selectedDate.getDate();
-
-//     // Get the <ul> element with the appropriate ID
-//     const ul = document.getElementById(`attending-${day}`);
-    
-//     if (ul) { // Check if the <ul> element exists
-//         // Create a new <li> element
-//         const li = document.createElement('li');
-//         li.textContent = usernameInput;
-        
-//         // Append the <li> element to the <ul> element
-//         ul.appendChild(li);
-//     } else {
-//         console.error(`UL element with ID "attending-${day}" not found.`);
-//     }
-// }
 
 
 function addMembertoCal(event) {
@@ -216,3 +253,31 @@ function revealCalendar() {
     document.getElementById("Expense Section").style.display = "none";
     document.getElementById("CalendarSection").style.display = "block";
 }
+
+
+
+
+
+const db = firebase.database();
+
+
+const dbRef = firebase.database().ref();
+    
+dbRef.child('Member').once('value', (snapshot) => {
+    const members = snapshot.val();
+    console.log(members);
+
+
+    for (let memberKey in members) {
+        
+        const practicesUl = document.getElementById('coachList');
+        
+        if(members[memberKey].Role == "Coach"){
+            let li = document.createElement('li');
+            li.textContent = memberKey; // Assuming the date is the key
+            practicesUl.appendChild(li);
+        }
+        
+    };
+
+}).catch(error => console.error("Error fetching member data: ", error));
